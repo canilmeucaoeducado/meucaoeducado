@@ -192,8 +192,25 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  /* Neon glow via pseudo-element — animates opacity (GPU, sem layout) */
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(255,178,48,0.7), 0 0 50px rgba(255,178,48,0.3);
+    opacity: 0.4;
+    animation: neon-pulse 2.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  @keyframes neon-pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.9; }
   }
 
   .btn-primary::before {
@@ -208,6 +225,13 @@
   .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    background: linear-gradient(135deg, #ffc157, #ffb230);
+    animation: none;
+  }
+
+  .btn-primary:hover::after {
+    opacity: 1;
+    animation: none;
   }
 
   .btn-primary:hover::before { opacity: 1; }
@@ -392,7 +416,6 @@
 
   .module-card:hover {
     border-color: rgba(255,178,48,0.30);
-    transform: translate3d(0,-4px,0);
   }
 
   .module-card:hover::before { opacity: 1; }
@@ -982,7 +1005,7 @@ window.addEventListener('load', function() {
     Transforme o comportamento do seu cão agitado em 20 dias,<br><span>sem depender de mais passeios</span>
   </h1>
 
-  <p class="hero-sub">Aprenda como gastar a energia mental do seu cão com treinos de 5 minutos dentro de casa, usando exercícios que cansam mais do que quilômetros de caminhada.</p>
+  <p class="hero-sub">Seu cão destrói a casa, late para tudo e não para quieto? Existe um jeito de mudar isso. E leva menos de 10 minutos por dia.</p>
 
 <div class="hero-cta"><a href="https://sun.eduzz.com/1W3ZEGD5W2" class="btn-primary">Quero um cão mais calmo em 20 dias</a></div>
 
@@ -1000,20 +1023,86 @@ window.addEventListener('load', function() {
 <!-- ============ MINI AUTORIDADE ============ -->
 <div style="background: var(--dark2); border-top: 1px solid var(--white10); border-bottom: 1px solid var(--white10); padding: 16px 20px;">
   <div class="container" style="display:flex; align-items:center; justify-content:center; gap: 20px; flex-wrap:wrap; text-align:center;">
-    <span style="font-size:13px; color:var(--white40);">Criado por</span>
-    <span style="font-size:14px; font-weight:700; color:var(--white);">Diego Lima</span>
-    <span style="color:var(--white10);">|</span>
-    <span style="font-size:13px; color:var(--orange);">Médico Veterinário · PhD UFRRJ</span>
-    <span style="color:var(--white10);">|</span>
-    <span style="font-size:13px; color:var(--white40);">15+ anos · Especialista em Comportamento Canino</span>
+    <span style="font-size:14px; color:var(--white80);">Criado por quem já ajudou centenas de cães agitados a ficarem mais calmos em casa</span>
   </div>
 </div>
+
+<!-- ============ USE ESSES EXERCÍCIOS ============ -->
+<section style="padding: 80px 20px; background: var(--dark); position: relative; overflow: hidden;">
+  <!-- Glow background -->
+  <div style="position:absolute; width:700px; height:400px; border-radius:50%; background:radial-gradient(circle, rgba(255,178,48,0.08) 0%, transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;"></div>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="text-center reveal" style="margin-bottom: 52px;">
+      <div class="line-accent"></div>
+      <h2 class="section-title">Isso Te Parece <span class="orange">Familiar?</span></h2>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="reveal" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; max-width: 960px; margin: 0 auto;">
+
+      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s;">
+        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
+        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Meu cão late para tudo. Vizinho reclama, eu me estresso, e ele não para.</p>
+      </div>
+
+      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s;">
+        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
+        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Saio arrastada pela rua toda vez que vou passear.</p>
+      </div>
+
+      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s;">
+        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
+        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Pula em mim e em todo mundo que entra em casa. Já me derrubou.</p>
+      </div>
+
+      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s;">
+        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
+        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Só obedece quando vê o petisco na mão. Sem comida, não adianta.</p>
+      </div>
+
+      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s;">
+        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
+        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Chamo, chamo, chamo. Ele olha na minha cara e ignora.</p>
+      </div>
+
+      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s;">
+        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
+        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Não tenho tempo para passeios de 1 hora todo dia. E me sinto mal por isso.</p>
+      </div>
+
+      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s;">
+        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
+        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Ele não para quieto, nunca. É agitado do momento que acorda até a hora de dormir.</p>
+      </div>
+
+      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s;">
+        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
+        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Destroi minhas coisas quando fico fora de casa. Pura pirraça.</p>
+      </div>
+
+      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s;">
+        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
+        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Sinto que ele não me respeita. Faço tudo por ele e ele não me escuta.</p>
+      </div>
+
+    </div>
+
+    <!-- Bottom CTA strip -->
+    <div class="reveal" style="margin-top:48px; text-align:center;">
+      <a href="https://sun.eduzz.com/1W3ZEGD5W2" class="btn-primary" style="font-size:16px; padding:18px 48px;">
+        Quero Começar Agora →
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- ============ PROVA SOCIAL ============ -->
 <section class="proof-section">
   <div class="container">
     <div class="text-center reveal">
-      <h2 class="section-title">Quer uma <span class="orange">Prova?</span></h2>
+      <h2 class="section-title">Veja o Que Acontece <span class="orange">em 20 Dias</span></h2>
     </div>
   </div>
 
@@ -1091,20 +1180,7 @@ window.addEventListener('load', function() {
 
   .proof-carousel-wrap::before,
   .proof-carousel-wrap::after {
-    content: '';
-    position: absolute;
-    top: 0; bottom: 0;
-    width: 80px;
-    z-index: 2;
-    pointer-events: none;
-  }
-  .proof-carousel-wrap::before {
-    left: 0;
-    background: linear-gradient(to right, var(--dark), transparent);
-  }
-  .proof-carousel-wrap::after {
-    right: 0;
-    background: linear-gradient(to left, var(--dark), transparent);
+    display: none;
   }
 
   /* O trilho de cards */
@@ -1154,7 +1230,6 @@ window.addEventListener('load', function() {
 
   .proof-card:hover {
     border-color: rgba(255,178,48,0.30);
-    transform: translateY(-4px);
   }
 
   .proof-card:hover::before { opacity: 1; }
@@ -1309,78 +1384,6 @@ window.addEventListener('load', function() {
   })();
 </script>
 
-<!-- ============ USE ESSES EXERCÍCIOS ============ -->
-<section style="padding: 80px 20px; background: var(--dark); position: relative; overflow: hidden;">
-  <!-- Glow background -->
-  <div style="position:absolute; width:700px; height:400px; border-radius:50%; background:radial-gradient(circle, rgba(255,178,48,0.08) 0%, transparent 70%); top:50%; left:50%; transform:translate(-50%,-50%); pointer-events:none;"></div>
-
-  <div class="container">
-    <!-- Header -->
-    <div class="text-center reveal" style="margin-bottom: 52px;">
-      <div class="section-label">Resultados que você vai ver</div>
-      <div class="line-accent"></div>
-      <h2 class="section-title">Use Esses Exercícios Para<span class="orange">…</span></h2>
-    </div>
-
-    <!-- Cards grid -->
-    <div class="reveal" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; max-width: 960px; margin: 0 auto;">
-
-      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,178,48,0.40)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,178,48,0.15)';this.style.transform='translateY(0)'">
-        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
-        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Aumentar o foco do seu cão, mesmo em ambientes cheios de distrações.</p>
-      </div>
-
-      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,178,48,0.40)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,178,48,0.15)';this.style.transform='translateY(0)'">
-        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
-        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Gastar energia em dias de chuva ou correria.</p>
-      </div>
-
-      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,178,48,0.40)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,178,48,0.15)';this.style.transform='translateY(0)'">
-        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
-        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Reduzir comportamentos reativos.</p>
-      </div>
-
-      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,178,48,0.40)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,178,48,0.15)';this.style.transform='translateY(0)'">
-        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
-        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Fortalecer a confiança de cães ansiosos ou inseguros.</p>
-      </div>
-
-      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,178,48,0.40)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,178,48,0.15)';this.style.transform='translateY(0)'">
-        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
-        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Ajudar seu cão a se acalmar e relaxar, usando o cérebro e o corpo do jeito certo.</p>
-      </div>
-
-      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,178,48,0.40)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,178,48,0.15)';this.style.transform='translateY(0)'">
-        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
-        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Fortalecer o vínculo entre vocês e a confiança com seu cão</p>
-      </div>
-
-      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,178,48,0.40)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,178,48,0.15)';this.style.transform='translateY(0)'">
-        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
-        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Treinar de forma divertida, sem punição ou violência.</p>
-      </div>
-
-      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,178,48,0.40)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,178,48,0.15)';this.style.transform='translateY(0)'">
-        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
-        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Ensinar com pouco tempo livre. Sessões com menos de 10 minutos.</p>
-      </div>
-
-      <div style="background:var(--dark2); border:1px solid rgba(255,178,48,0.15); border-radius:14px; padding:26px 24px; display:flex; align-items:flex-start; gap:16px; transition:border-color 0.3s, transform 0.3s;" onmouseover="this.style.borderColor='rgba(255,178,48,0.40)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='rgba(255,178,48,0.15)';this.style.transform='translateY(0)'">
-        <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,var(--orange),#e89d1a);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">✔</div>
-        <p style="font-size:15px;font-weight:600;color:var(--white);line-height:1.5;">Ver evolução real no comportamento do seu cão.</p>
-      </div>
-
-    </div>
-
-    <!-- Bottom CTA strip -->
-    <div class="reveal" style="margin-top:48px; text-align:center;">
-      <a href="https://sun.eduzz.com/1W3ZEGD5W2" class="btn-primary" style="font-size:16px; padding:18px 48px;">
-        Quero Começar Agora →
-      </a>
-    </div>
-  </div>
-</section>
-
 <!-- ============ MODULES ============ -->
 <section class="modules-section">
   <div class="container">
@@ -1399,22 +1402,22 @@ window.addEventListener('load', function() {
       </div>
       <div class="module-card">
         <span class="module-emoji">🧠</span>
-        <h3>Orientações Iniciais</h3>
+        <h3>Como Começar do Zero</h3>
         <p>Como motivar o cão, conduzir os treinos e evitar erros comuns. Base para todo o método.</p>
       </div>
       <div class="module-card">
         <span class="module-emoji">🎩</span>
-        <h3>Truques</h3>
+        <h3>Truques que Impressionam</h3>
         <p>Fáceis e avançados. Excelentes para estimulação mental.</p>
       </div>
       <div class="module-card">
         <span class="module-emoji">🎯</span>
-        <h3>Obediência</h3>
+        <h3>Obediência de Primeira</h3>
         <p>Ótimo se você quer um cão bem comportado que venha até você quando chamado.</p>
       </div>
       <div class="module-card">
         <span class="module-emoji">👃</span>
-        <h3>Exercícios de Farejar</h3>
+        <h3>O Poder do Focinho</h3>
         <p>Atividades que cansam mais do que correr. O segredo do cão equilibrado.</p>
       </div>
       <div class="module-card">
@@ -1424,7 +1427,7 @@ window.addEventListener('load', function() {
       </div>
       <div class="module-card">
         <span class="module-emoji">🐕</span>
-        <h3>Consciência Corporal</h3>
+        <h3>Equilíbrio e Coordenação</h3>
         <p>Para melhorar coordenação, confiança e controle do corpo. Ótimo para cães muito agitados, inseguros ou estabanados.</p>
       </div>
       <div class="module-card">
