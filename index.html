@@ -383,7 +383,7 @@
   /* ========== MODULES ========== */
   .modules-section {
     padding: 100px 20px;
-    background: var(--dark2);
+    background: var(--dark);
   }
 
   .modules-grid {
@@ -560,7 +560,7 @@
   /* ========== PRICING ========== */
   .pricing-section {
     padding: 100px 20px;
-    background: var(--dark2);
+    background: var(--dark);
     text-align: center;
     position: relative;
   }
@@ -744,7 +744,7 @@
   /* ========== FINAL CTA ========== */
   .final-cta {
     padding: 120px 20px;
-    background: var(--dark);
+    background: var(--dark2);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -864,19 +864,20 @@
 
     .hero-trust {
       margin-top: 24px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 16px;
       width: 100%;
     }
     .trust-divider { display: none; }
     .hero-trust span {
-      background: var(--white10);
-      border-radius: 8px;
-      padding: 8px 10px;
-      font-size: 11px;
+      background: none;
+      border-radius: 0;
+      padding: 0;
+      font-size: 12px;
       text-align: center;
-      color: var(--white80);
+      color: var(--white40);
     }
 
     /* VIDEO */
@@ -1020,12 +1021,6 @@ window.addEventListener('load', function() {
   </div>
 </section>
 
-<!-- ============ MINI AUTORIDADE ============ -->
-<div style="background: var(--dark2); border-top: 1px solid var(--white10); border-bottom: 1px solid var(--white10); padding: 16px 20px;">
-  <div class="container" style="display:flex; align-items:center; justify-content:center; gap: 20px; flex-wrap:wrap; text-align:center;">
-    <span style="font-size:14px; color:var(--white80);">Criado por quem já ajudou centenas de cães agitados a ficarem mais calmos em casa</span>
-  </div>
-</div>
 
 <!-- ============ MODULES ============ -->
 <section class="modules-section">
@@ -1241,7 +1236,7 @@ window.addEventListener('load', function() {
   /* ========== PROOF SECTION ========== */
   .proof-section {
     padding: 100px 0 80px;
-    background: var(--dark);
+    background: var(--dark2);
     position: relative;
     overflow: hidden;
   }
@@ -1599,7 +1594,7 @@ window.addEventListener('load', function() {
 </section>
 
 <!-- ============ QUEM SOU EU ============ -->
-<section style="padding: 80px 20px; background: var(--dark2); position: relative; overflow: hidden;">
+<section style="padding: 80px 20px; background: var(--dark); position: relative; overflow: hidden;">
   <div style="position:absolute; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle, rgba(255,178,48,0.07) 0%, transparent 70%); top:50%; right:-200px; pointer-events:none;"></div>
 
   <div class="container">
