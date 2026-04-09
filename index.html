@@ -1097,6 +1097,18 @@ window.addEventListener('load', function() {
   <div class="proof-carousel-wrap reveal">
     <div class="proof-carousel" id="proofCarousel">
 
+      <!-- Card Rosangela — vídeo depoimento com play manual -->
+      <div class="proof-card" style="padding:0; overflow:hidden; position:relative; cursor:pointer;" onclick="toggleVideoRosangela(this)">
+        <video id="videoRosangela" src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela.mp4" playsinline preload="metadata" style="width:100%; height:100%; object-fit:cover; display:block;" aria-label="Depoimento em vídeo da Rosangela"></video>
+        <!-- Botão play -->
+        <div id="playBtnRosangela" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(0,42,58,0.45); transition:opacity 0.2s;">
+          <div style="width:64px; height:64px; border-radius:50%; background:#ffb230; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 24px rgba(0,0,0,0.35);">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><polygon points="6,3 20,12 6,21" fill="#00425a"/></svg>
+          </div>
+          <span style="margin-top:12px; color:#ffffff; font-family:'Outfit',sans-serif; font-size:13px; font-weight:600; letter-spacing:0.5px; text-shadow:0 1px 4px rgba(0,0,0,0.5);">Depoimento da Rosangela</span>
+        </div>
+      </div>
+
       <!-- Card 1 — Jeane / Jade (imagem) -->
       <div class="proof-card" style="padding:0; overflow:hidden;">
         <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp" alt="Depoimento Jeane e Jade" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
@@ -1217,16 +1229,14 @@ window.addEventListener('load', function() {
     </div>
 
     <div class="reveal" style="max-width: 800px; margin: 40px auto 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,178,48,0.20); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-      <div style="position:relative; width:100%; aspect-ratio:16/9;">
-        <iframe
-          style="position:absolute; inset:0; width:100%; height:100%; border:none; display:block;"
-          src="https://www.youtube.com/embed/fwlvdDIjnHY"
-          title="Prévia de atividade — Método Meu Cão Educado"
-          loading="lazy"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen>
-        </iframe>
+      <div style="position:relative; width:100%; aspect-ratio:16/9; cursor:pointer; background:#001f2b;" onclick="toggleVideoPastorBelga()">
+        <video id="videoPastorBelga" src="https://canilmeucaoeducado.github.io/meucaoeducado/video_Meio_Pastor_Belga.mp4" playsinline preload="metadata" style="width:100%; height:100%; display:block; object-fit:cover;"></video>
+        <div id="playBtnPastorBelga" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(0,42,58,0.55); transition:opacity 0.2s;">
+          <div style="width:72px; height:72px; border-radius:50%; background:#ffb230; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 28px rgba(0,0,0,0.4);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><polygon points="6,3 20,12 6,21" fill="#00425a"/></svg>
+          </div>
+          <span style="margin-top:14px; color:#ffffff; font-family:'Outfit',sans-serif; font-size:14px; font-weight:600; letter-spacing:0.5px; text-shadow:0 1px 4px rgba(0,0,0,0.6);">Assista uma prévia do método</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1689,6 +1699,46 @@ window.addEventListener('load', function() {
     } else {
       stickyBar.classList.remove('show');
     }
+  });
+
+  // Vídeo depoimento Rosangela — play/pause com clique
+  function toggleVideoRosangela(card) {
+    const video = document.getElementById('videoRosangela');
+    const btn = document.getElementById('playBtnRosangela');
+    if (video.paused) {
+      video.play();
+      btn.style.opacity = '0';
+      btn.style.pointerEvents = 'none';
+    } else {
+      video.pause();
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+    }
+  }
+  document.getElementById('videoRosangela').addEventListener('ended', () => {
+    const btn = document.getElementById('playBtnRosangela');
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
+  });
+
+  // Vídeo Pastor Belga — play/pause com clique
+  function toggleVideoPastorBelga() {
+    const video = document.getElementById('videoPastorBelga');
+    const btn = document.getElementById('playBtnPastorBelga');
+    if (video.paused) {
+      video.play();
+      btn.style.opacity = '0';
+      btn.style.pointerEvents = 'none';
+    } else {
+      video.pause();
+      btn.style.opacity = '1';
+      btn.style.pointerEvents = 'auto';
+    }
+  }
+  document.getElementById('videoPastorBelga').addEventListener('ended', () => {
+    const btn = document.getElementById('playBtnPastorBelga');
+    btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
   });
 </script>
 </body>
