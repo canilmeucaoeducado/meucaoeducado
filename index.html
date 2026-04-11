@@ -960,7 +960,6 @@
 </style>
 <!-- Meta Pixel Code -->
 <script defer>
-window.addEventListener('load', function() {
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -971,7 +970,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1336628157581322');
 fbq('track', 'PageView');
-});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
@@ -979,14 +977,12 @@ src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 
 <!-- Microsoft Clarity -->
-<script type="text/javascript" defer>
-window.addEventListener('load', function() {
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "w3fnz1hr1l");
-});
+<script>
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "w3fnz1hr1l");
 </script>
 <!-- End Microsoft Clarity -->
 </head>
@@ -1424,9 +1420,11 @@ window.addEventListener('load', function() {
 </style>
 
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
   (function() {
     const carousel = document.getElementById('proofCarousel');
     const dotsWrap = document.getElementById('proofDots');
+    if (!carousel || !dotsWrap) return;
     const cards = carousel.querySelectorAll('.proof-card');
     const cardCount = cards.length;
 
@@ -1473,6 +1471,7 @@ window.addEventListener('load', function() {
       carousel.scrollLeft = scrollStart - (e.pageX - startX);
     });
   })();
+  }); // fim DOMContentLoaded
 </script>
 
 <!-- ============ PRICING ============ -->
@@ -1487,8 +1486,8 @@ window.addEventListener('load', function() {
     <div class="price-card reveal">
       <div class="price-badge">Oferta Especial</div>
       <div class="price-original">de R$ 347,00</div>
-      <div class="price-main" style="font-size:clamp(38px,8vw,68px); font-family:'Bebas Neue',sans-serif; color:var(--orange); line-height:1.1; margin-bottom:8px;">12x R$ 10,03</div>
-      <div class="price-value" style="font-size:clamp(18px,3vw,24px); font-family:'Outfit',sans-serif; font-weight:500; color:var(--white40); letter-spacing:0.02em; margin-bottom:24px;">ou R$ 97,00 à vista</div>
+      <div class="price-main" style="font-size:clamp(38px,8vw,68px); font-family:'Bebas Neue',sans-serif; color:var(--orange); line-height:1.1; margin-bottom:8px;">Por apenas R$ 97,00</div>
+
 
       <ul class="price-includes">
         <li>9 Módulos completos</li>
@@ -1594,7 +1593,7 @@ window.addEventListener('load', function() {
 <section class="final-cta">
   <div class="container reveal">
     <h2 class="section-title">Transforme Seu Cão<br><span class="orange">Começando Hoje</span></h2>
-    <p class="section-subtitle">Um método completo que realmente funciona.<br>Por apenas 12x de R$10,03.</p>
+    <p class="section-subtitle">Um método completo que realmente funciona.<br>Por apenas R$ 97,00.</p>
     <a href="https://sun.eduzz.com/1W3ZEGD5W2" class="btn-primary btn-cta-final" style="font-size:18px; padding:22px 56px;">
       Quero Transformar Meu Cão Agora
       <span class="btn-arrow">→</span>
@@ -1667,7 +1666,7 @@ window.addEventListener('load', function() {
 
 <!-- ============ STICKY BAR ============ -->
 <div class="sticky-bar" id="stickyBar">
-  <span>Transforme seu cão agitado em 20 dias • <strong>12x de R$10,03</strong></span>
+  <span>Transforme seu cão agitado em 20 dias • <strong>Por apenas R$ 97,00</strong></span>
   <a href="https://sun.eduzz.com/1W3ZEGD5W2" class="btn-sm">Quero Começar →</a>
 </div>
 
@@ -1693,18 +1692,21 @@ window.addEventListener('load', function() {
 
   // Sticky bar
   const stickyBar = document.getElementById('stickyBar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      stickyBar.classList.add('show');
-    } else {
-      stickyBar.classList.remove('show');
-    }
-  });
+  if (stickyBar) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        stickyBar.classList.add('show');
+      } else {
+        stickyBar.classList.remove('show');
+      }
+    }, { passive: true });
+  }
 
   // Vídeo depoimento Rosangela — play/pause com clique
   function toggleVideoRosangela(card) {
     const video = document.getElementById('videoRosangela');
     const btn = document.getElementById('playBtnRosangela');
+    if (!video || !btn) return;
     if (video.paused) {
       video.play();
       btn.style.opacity = '0';
@@ -1715,16 +1717,19 @@ window.addEventListener('load', function() {
       btn.style.pointerEvents = 'auto';
     }
   }
-  document.getElementById('videoRosangela').addEventListener('ended', () => {
-    const btn = document.getElementById('playBtnRosangela');
-    btn.style.opacity = '1';
-    btn.style.pointerEvents = 'auto';
-  });
+  const videoRosangela = document.getElementById('videoRosangela');
+  if (videoRosangela) {
+    videoRosangela.addEventListener('ended', () => {
+      const btn = document.getElementById('playBtnRosangela');
+      if (btn) { btn.style.opacity = '1'; btn.style.pointerEvents = 'auto'; }
+    });
+  }
 
   // Vídeo Pastor Belga — play/pause com clique
   function toggleVideoPastorBelga() {
     const video = document.getElementById('videoPastorBelga');
     const btn = document.getElementById('playBtnPastorBelga');
+    if (!video || !btn) return;
     if (video.paused) {
       video.play();
       btn.style.opacity = '0';
@@ -1735,11 +1740,13 @@ window.addEventListener('load', function() {
       btn.style.pointerEvents = 'auto';
     }
   }
-  document.getElementById('videoPastorBelga').addEventListener('ended', () => {
-    const btn = document.getElementById('playBtnPastorBelga');
-    btn.style.opacity = '1';
-    btn.style.pointerEvents = 'auto';
-  });
+  const videoPastorBelga = document.getElementById('videoPastorBelga');
+  if (videoPastorBelga) {
+    videoPastorBelga.addEventListener('ended', () => {
+      const btn = document.getElementById('playBtnPastorBelga');
+      if (btn) { btn.style.opacity = '1'; btn.style.pointerEvents = 'auto'; }
+    });
+  }
 </script>
 </body>
 </html>
