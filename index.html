@@ -10,7 +10,7 @@
 <meta property="og:url" content="https://canilmeucaoeducado.github.io/meucaoeducado/">
 <meta property="og:title" content="Transforme o comportamento do seu cão agitado em 20 dias, sem depender de mais passeios">
 <meta property="og:description" content="Gaste a energia do seu cão, resolva comportamentos difíceis e fortaleça o vínculo entre vocês, em menos de 10 minutos por dia.">
-<meta property="og:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/quemsoueu.png">
+<meta property="og:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/quemsoueu.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="pt_BR">
@@ -415,7 +415,8 @@
   }
 
   .module-card:hover {
-    border-color: rgba(255,178,48,0.30);
+    box-shadow: inset 0 0 0 1px rgba(255,178,48,0.30);
+    border-color: transparent;
   }
 
   .module-card:hover::before { opacity: 1; }
@@ -495,7 +496,7 @@
     transition: border-color 0.3s;
   }
 
-  .check-item:hover { border-color: rgba(255,178,48,0.30); }
+  .check-item:hover { box-shadow: inset 0 0 0 1px rgba(255,178,48,0.30); border-color: transparent; }
 
   .check-icon {
     width: 22px; height: 22px;
@@ -775,7 +776,7 @@
     padding: 28px 20px;
     text-align: center;
     font-size: 12px;
-    color: var(--white40);
+    color: #b0c8d8;
     border-top: 1px solid var(--white10);
   }
 
@@ -958,18 +959,20 @@
     margin: 0 auto 20px;
   }
 </style>
-<!-- Meta Pixel Code -->
-<script defer>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1336628157581322');
-fbq('track', 'PageView');
+<!-- Meta Pixel Code — carregado após window load para não bloquear a thread principal -->
+<script>
+window.addEventListener('load', function() {
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1336628157581322');
+  fbq('track', 'PageView');
+});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
@@ -988,6 +991,7 @@ src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
 </head>
 <body>
 
+<main>
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="hero-bg-circle"></div>
@@ -1095,7 +1099,10 @@ src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
 
       <!-- Card Rosangela — vídeo depoimento com play manual -->
       <div class="proof-card" style="padding:0; overflow:hidden; position:relative; cursor:pointer;" onclick="toggleVideoRosangela(this)">
-        <video id="videoRosangela" src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela.mp4" poster="https://canilmeucaoeducado.github.io/meucaoeducado/capa_depoimento_rosangela.webp" playsinline preload="metadata" style="width:100%; height:100%; object-fit:cover; display:block;" aria-label="Depoimento em vídeo da Rosangela"></video>
+        <video id="videoRosangela" src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela.mp4" poster="https://canilmeucaoeducado.github.io/meucaoeducado/capa_depoimento_rosangela.webp" playsinline preload="metadata" style="width:100%; height:100%; object-fit:cover; display:block;" aria-label="Depoimento em vídeo da Rosangela" onerror="this.closest('.proof-card').style.display='none'">
+          <!-- TODO: Criar arquivo .vtt de legendas e apontar o src abaixo -->
+          <track kind="captions" src="" srclang="pt" label="Português" default>
+        </video>
         <!-- Botão play -->
         <div id="playBtnRosangela" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(0,42,58,0.45); transition:opacity 0.2s;">
           <div style="width:64px; height:64px; border-radius:50%; background:#ffb230; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 24px rgba(0,0,0,0.35);">
@@ -1107,42 +1114,90 @@ src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
 
       <!-- Card 1 — Jeane / Jade (imagem) -->
       <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp" alt="Depoimento Jeane e Jade" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <!-- NOTA: Criar versões redimensionadas: card1-300w.webp, card1-600w.webp -->
+        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp"
+             srcset="https://canilmeucaoeducado.github.io/meucaoeducado/card1-300w.webp 300w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card1-600w.webp 600w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp 1080w"
+             sizes="300px"
+             alt="Depoimento Jeane e Jade" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
 
       <!-- Card 2 — Pedro / Rock (imagem) -->
       <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp" alt="Depoimento Pedro e Rock" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <!-- NOTA: Criar versões redimensionadas: card2-300w.webp, card2-600w.webp -->
+        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp"
+             srcset="https://canilmeucaoeducado.github.io/meucaoeducado/card2-300w.webp 300w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card2-600w.webp 600w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp 1080w"
+             sizes="300px"
+             alt="Depoimento Pedro e Rock" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
 
       <!-- Card 7 (imagem) -->
       <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp" alt="Depoimento card7" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <!-- NOTA: Criar versões redimensionadas: card7-300w.webp, card7-600w.webp -->
+        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp"
+             srcset="https://canilmeucaoeducado.github.io/meucaoeducado/card7-300w.webp 300w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card7-600w.webp 600w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp 1080w"
+             sizes="300px"
+             alt="Depoimento card7" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
 
       <!-- Card 4 — Beto / Max (imagem) -->
       <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp" alt="Depoimento Beto e Max" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <!-- NOTA: Criar versões redimensionadas: card4-300w.webp, card4-600w.webp -->
+        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp"
+             srcset="https://canilmeucaoeducado.github.io/meucaoeducado/card4-300w.webp 300w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card4-600w.webp 600w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp 1080w"
+             sizes="300px"
+             alt="Depoimento Beto e Max" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
 
       <!-- Card 5 — Kiara / Maia (imagem) -->
       <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp" alt="Depoimento Kiara e Maia" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <!-- NOTA: Criar versões redimensionadas: card5-300w.webp, card5-600w.webp -->
+        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp"
+             srcset="https://canilmeucaoeducado.github.io/meucaoeducado/card5-300w.webp 300w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card5-600w.webp 600w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp 1080w"
+             sizes="300px"
+             alt="Depoimento Kiara e Maia" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
 
       <!-- Card 6 (imagem) -->
       <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp" alt="Depoimento Nero" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <!-- NOTA: Criar versões redimensionadas: card6-300w.webp, card6-600w.webp -->
+        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp"
+             srcset="https://canilmeucaoeducado.github.io/meucaoeducado/card6-300w.webp 300w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card6-600w.webp 600w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp 1080w"
+             sizes="300px"
+             alt="Depoimento Nero" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
 
       <!-- Card 3 — Ros / Duque (imagem) -->
       <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp" alt="Depoimento Ros e Duque" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <!-- NOTA: Criar versões redimensionadas: card3-300w.webp, card3-600w.webp -->
+        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp"
+             srcset="https://canilmeucaoeducado.github.io/meucaoeducado/card3-300w.webp 300w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card3-600w.webp 600w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp 1080w"
+             sizes="300px"
+             alt="Depoimento Ros e Duque" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
 
       <!-- Card 8 (imagem) -->
       <div class="proof-card" style="padding:0; overflow:hidden;">
-        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp" alt="Depoimento card8" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <!-- NOTA: Criar versões redimensionadas: card8-300w.webp, card8-600w.webp -->
+        <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp"
+             srcset="https://canilmeucaoeducado.github.io/meucaoeducado/card8-300w.webp 300w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card8-600w.webp 600w,
+                     https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp 1080w"
+             sizes="300px"
+             alt="Depoimento card8" width="300" height="375" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
       </div>
 
     </div>
@@ -1221,12 +1276,22 @@ src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
       <h2 class="section-title">Confira uma prévia <span class="orange">do que você vai receber:</span></h2>
     </div>
     <div class="reveal" style="max-width: 800px; margin: 0 auto; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,178,48,0.20); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-      <img src="https://canilmeucaoeducado.github.io/meucaoeducado/previameio.webp" alt="Prévia das atividades do Método Meu Cão Educado" loading="lazy" style="width:100%; display:block;">
+      <!-- NOTA: Criar versões redimensionadas para srcset: previameio-400w.webp e previameio-800w.webp -->
+      <img src="https://canilmeucaoeducado.github.io/meucaoeducado/previameio.webp"
+           srcset="https://canilmeucaoeducado.github.io/meucaoeducado/previameio-400w.webp 400w,
+                   https://canilmeucaoeducado.github.io/meucaoeducado/previameio-800w.webp 800w,
+                   https://canilmeucaoeducado.github.io/meucaoeducado/previameio.webp 1257w"
+           sizes="(max-width: 840px) calc(100vw - 40px), 800px"
+           width="1257" height="815"
+           alt="Prévia das atividades do Método Meu Cão Educado" loading="lazy" style="width:100%; display:block;">
     </div>
 
     <div class="reveal" style="max-width: 800px; margin: 40px auto 0; border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,178,48,0.20); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
       <div style="position:relative; width:100%; aspect-ratio:16/9; cursor:pointer; background:#001f2b;" onclick="toggleVideoPastorBelga()">
-        <video id="videoPastorBelga" src="https://canilmeucaoeducado.github.io/meucaoeducado/video_Meio_Pastor_Belga.mp4" poster="https://canilmeucaoeducado.github.io/meucaoeducado/capa_Meio_Pastor_Belga.webp" playsinline preload="metadata" style="width:100%; height:100%; display:block; object-fit:cover;"></video>
+        <video id="videoPastorBelga" src="https://canilmeucaoeducado.github.io/meucaoeducado/video_Meio_Pastor_Belga.mp4" poster="https://canilmeucaoeducado.github.io/meucaoeducado/capa_Meio_Pastor_Belga.webp" playsinline preload="metadata" style="width:100%; height:100%; display:block; object-fit:cover;">
+          <!-- TODO: Criar arquivo .vtt de legendas e apontar o src abaixo -->
+          <track kind="captions" src="" srclang="pt" label="Português" default>
+        </video>
         <div id="playBtnPastorBelga" style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; background:rgba(0,42,58,0.55); transition:opacity 0.2s;">
           <div style="width:72px; height:72px; border-radius:50%; background:#ffb230; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 28px rgba(0,0,0,0.4);">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><polygon points="6,3 20,12 6,21" fill="#00425a"/></svg>
@@ -1316,7 +1381,8 @@ src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
   }
 
   .proof-card:hover {
-    border-color: rgba(255,178,48,0.30);
+    box-shadow: inset 0 0 0 1px rgba(255,178,48,0.30);
+    border-color: transparent;
   }
 
   .proof-card:hover::before { opacity: 1; }
@@ -1436,23 +1502,24 @@ src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
       dotsWrap.appendChild(dot);
     });
 
+    // Lê offsetWidth uma vez (evita reflow forçado repetido)
+    let cardWidth = cards[0].offsetWidth + 20;
+    window.addEventListener('resize', () => { cardWidth = cards[0].offsetWidth + 20; }, { passive: true });
+
     function getDots() { return dotsWrap.querySelectorAll('.proof-dot'); }
 
     function updateDots() {
       const scrollLeft = carousel.scrollLeft;
-      const cardWidth = cards[0].offsetWidth + 20; // gap
       const active = Math.round(scrollLeft / cardWidth);
       getDots().forEach((d, i) => d.classList.toggle('active', i === active));
     }
 
     function scrollToCard(i) {
-      const cardWidth = cards[0].offsetWidth + 20;
       carousel.scrollTo({ left: cardWidth * i, behavior: 'smooth' });
     }
 
     window.scrollProof = function(dir) {
       const scrollLeft = carousel.scrollLeft;
-      const cardWidth = cards[0].offsetWidth + 20;
       const current = Math.round(scrollLeft / cardWidth);
       const next = Math.max(0, Math.min(cardCount - 1, current + dir));
       scrollToCard(next);
@@ -1618,7 +1685,7 @@ src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
       <!-- Photo -->
       <div style="position:relative;">
         <div style="border-radius: 20px; overflow: hidden; border: 2px solid rgba(255,178,48,0.25); box-shadow: 0 0 60px rgba(255,178,48,0.15), 0 20px 60px rgba(0,0,0,0.6);">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/quemsoueu.png" alt="Diego Lima" loading="lazy" style="width:100%; display:block; object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#222)'; this.style.display='none';">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/quemsoueu.webp" alt="Diego Lima" loading="lazy" style="width:100%; display:block; object-fit:cover;" onerror="this.parentElement.style.background='linear-gradient(135deg,#1a1a1a,#222)'; this.style.display='none';">
         </div>
         <!-- Orange accent bar -->
         <div style="position:absolute; bottom:-12px; left:20px; right:20px; height:4px; background:linear-gradient(90deg, var(--orange), var(--orange-light)); border-radius:4px;"></div>
@@ -1660,6 +1727,7 @@ src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
 </style>
 
 <!-- ============ FOOTER ============ -->
+</main>
 <footer>
   <p>© 2025 Diego Lima — Veterinário Adestrador. Todos os direitos reservados.</p>
 </footer>
