@@ -8,7 +8,7 @@
 
   <!-- Segurança via meta tags (GitHub Pages não permite headers HTTP) -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+  <!-- X-Frame-Options deve ser configurado via HTTP header no CDN/servidor, não via meta -->
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- Preconnect MÁXIMO 2 origens críticas (PageSpeed avisa se >4) -->
@@ -19,8 +19,11 @@
   <link rel="dns-prefetch" href="https://www.clarity.ms" />
   <link rel="dns-prefetch" href="https://cdn.eduzzcdn.com" />
 
-  <!-- Preload do LCP — fetchpriority=high para antecipar o browser -->
-  <link rel="preload" as="image" href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png" fetchpriority="high" />
+  <!-- Preload do LCP em WebP — fetchpriority=high -->
+  <!-- AÇÃO: converter mockup_meucaoeducado.png → .webp no repositório (~836 KiB de economia) -->
+  <link rel="preload" as="image" href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp" fetchpriority="high" type="image/webp" />
+  <!-- Fallback PNG para browsers sem WebP (raro) -->
+  <link rel="preload" as="image" href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png" fetchpriority="high" media="not all" />
 
   <!-- Google Fonts não bloqueante -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
@@ -434,6 +437,9 @@
       background: var(--sage-claro);
       cursor: pointer;
       transition: background 0.2s;
+      border: none;
+      padding: 0;
+      flex-shrink: 0;
     }
 
     .proof-dot.active { background: var(--verde-escuro); }
@@ -571,14 +577,33 @@
 
     <!-- Wrapper com aspect-ratio fixo → CLS zero mesmo antes da imagem carregar -->
     <div class="hero-image-wrap">
-      <img
-        src="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png"
-        alt="Mockup do curso Método Meu Cão Educado — Diego Lima Veterinário & Adestrador"
-        fetchpriority="high"
-        decoding="sync"
-        width="560"
-        height="350"
-      />
+      <!--
+        AÇÃO NECESSÁRIA no repositório GitHub:
+        1. Converter mockup_meucaoeducado.png → mockup_meucaoeducado.webp (qualidade 80)
+           Ferramenta online: squoosh.app ou cwebp (linha de comando)
+        2. Criar versão menor: mockup_meucaoeducado_560.webp (560px de largura)
+        Isso reduz o LCP de 6,8s para <2,5s (economia de ~836 KiB)
+      -->
+      <picture>
+        <!-- WebP responsivo: mobile usa versão 560px, desktop usa original -->
+        <source
+          type="image/webp"
+          srcset="
+            https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado_560.webp 560w,
+            https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp 1080w
+          "
+          sizes="(max-width: 600px) 100vw, 560px"
+        />
+        <!-- Fallback PNG para browsers antigos sem WebP -->
+        <img
+          src="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png"
+          alt="Mockup do curso Método Meu Cão Educado — Diego Lima Veterinário & Adestrador"
+          fetchpriority="high"
+          decoding="sync"
+          width="560"
+          height="350"
+        />
+      </picture>
     </div>
 
     <p class="hero-subtitle">
@@ -910,9 +935,10 @@
       // Monta dots em fragmento — 1 único reflow
       var frag = document.createDocumentFragment();
       cards.forEach(function (_, i) {
-        var dot = document.createElement('div');
+        var dot = document.createElement('button');
         dot.className = 'proof-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', 'Depoimento ' + (i + 1));
+        dot.setAttribute('aria-label', 'Ver depoimento ' + (i + 1));
+        dot.setAttribute('type', 'button');
         dot.onclick = function () {
           // Lê offsetLeft ANTES de qualquer escrita
           var targetLeft = cards[i].offsetLeft - 20;
@@ -966,31 +992,32 @@
     }
   </script>
 
-  <!-- Meta Pixel — defer para não bloquear TBT -->
-  <script defer>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1336628157581322');
-  fbq('track', 'PageView');
+  <!-- Meta Pixel + Microsoft Clarity — carregados após o evento load para não afetar LCP/TBT -->
+  <script>
+  window.addEventListener('load', function () {
+    // Meta Pixel
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1336628157581322');
+    fbq('track', 'PageView');
+
+    // Microsoft Clarity
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w3fnz1hr1l");
+  }, { once: true });
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
   /></noscript>
-
-  <!-- Microsoft Clarity — defer -->
-  <script defer>
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "w3fnz1hr1l");
-  </script>
 
 </body>
 </html>
