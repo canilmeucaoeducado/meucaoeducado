@@ -11,19 +11,21 @@
   <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-  <!-- Preconnect crítico -->
+  <!-- Preconnect MÁXIMO 2 origens críticas (PageSpeed avisa se >4) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://canilmeucaoeducado.github.io" crossorigin />
+  <!-- Terceiros carregados apenas via dns-prefetch -->
   <link rel="dns-prefetch" href="https://connect.facebook.net" />
   <link rel="dns-prefetch" href="https://www.clarity.ms" />
+  <link rel="dns-prefetch" href="https://cdn.eduzzcdn.com" />
 
-  <!-- Preload do LCP (mockup hero) -->
-  <link rel="preload" as="image" href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png" />
+  <!-- Preload do LCP — fetchpriority=high para antecipar o browser -->
+  <link rel="preload" as="image" href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png" fetchpriority="high" />
 
-  <!-- Google Fonts não bloqueante (print trick) -->
+  <!-- Google Fonts não bloqueante -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" /></noscript>
+
   <style>
     :root {
       --verde-escuro:  #3B4D1E;
@@ -66,7 +68,7 @@
     }
 
     .hero-title-line1 {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       font-size: clamp(2rem, 7vw, 3rem);
       font-weight: 800;
       color: var(--verde-escuro);
@@ -75,7 +77,7 @@
     }
 
     .hero-title-line2 {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       font-size: clamp(2.2rem, 8vw, 3.4rem);
       font-weight: 900;
       color: var(--verde-medio);
@@ -84,34 +86,27 @@
       margin-top: 4px;
     }
 
+    /* Wrapper com aspect-ratio fixo para EVITAR CLS */
     .hero-image-wrap {
-      margin: 16px auto 0px;
+      margin: 16px auto 0;
       max-width: 560px;
+      /* Reserva espaço exato ANTES da imagem carregar → CLS = 0 */
+      aspect-ratio: 560 / 350;
+      overflow: hidden;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--creme-verde) 0%, #d0d0bc 100%);
     }
 
     .hero-image-wrap img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       border-radius: 16px;
       display: block;
     }
 
-    /* Placeholder para quando a imagem não carrega */
-    .hero-image-placeholder {
-      width: 100%;
-      aspect-ratio: 16/10;
-      background: linear-gradient(135deg, var(--creme-verde) 0%, #d0d0bc 100%);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--verde-escuro);
-      font-family: 'DM Sans', sans-serif;
-      font-size: 0.9rem;
-      border: 2px dashed var(--verde-medio);
-    }
-
     .hero-subtitle {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       font-size: 1.05rem;
       color: var(--marrom-terra);
       max-width: 460px;
@@ -120,7 +115,7 @@
     }
 
     .hero-price {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       font-size: 1.7rem;
       font-weight: 700;
       color: var(--verde-escuro);
@@ -135,7 +130,7 @@
       text-decoration: none;
       border-radius: 10px;
       padding: 16px 32px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       font-weight: 700;
       font-size: 1rem;
       letter-spacing: 0.03em;
@@ -174,14 +169,14 @@
       border-radius: 10px;
       padding: 14px 24px;
       text-align: center;
-      margin: 8px 20px 20px;
+      margin: 8px auto 20px;
       max-width: 700px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .section-heading-box h2 {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       color: var(--verde-medio);
       font-size: 1.5rem;
       font-weight: 700;
@@ -246,33 +241,25 @@
       margin: 20px 0;
     }
 
-    /* Bônus */
     .bonus-item .included-text strong {
       color: var(--verde-oliva);
     }
 
-    /* Texto de fechamento */
     .closing-box {
       background-color: var(--creme-verde);
       border-radius: 12px;
       padding: 20px 24px;
       text-align: center;
-      margin: 20px;
+      margin: 20px auto;
       max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .closing-box p {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       font-size: 1.05rem;
       font-weight: 600;
       color: var(--verde-escuro);
       line-height: 1.5;
-    }
-
-    .closing-box p u {
-      text-decoration: underline;
     }
 
     /* ===== FAQs ===== */
@@ -286,7 +273,7 @@
     }
 
     .faq-heading-box h2 {
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       color: var(--verde-escuro);
       font-size: 1.5rem;
       font-weight: 700;
@@ -319,7 +306,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--font-sans);
       font-size: 0.97rem;
       font-weight: 700;
       color: var(--verde-escuro);
@@ -383,21 +370,30 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       padding: 0 20px 8px;
-      will-change: scroll-position;
-      contain: layout style;
+      /* Evita reflow forçado → sem will-change que força compositing layer desnecessário */
     }
 
     .proof-carousel::-webkit-scrollbar { display: none; }
 
+    /* Dimensões fixas no card para evitar CLS */
     .proof-card {
       flex: 0 0 280px;
-      height: auto;
+      /* Altura reservada via aspect-ratio para evitar CLS ao carregar imagens lazy */
+      aspect-ratio: 4 / 5;
       border-radius: 14px;
       background: var(--creme-verde);
       scroll-snap-align: start;
       overflow: hidden;
-      contain: layout style paint;
       border: 2px solid var(--verde-escuro);
+    }
+
+    /* Imagens do carrossel com dimensões explícitas */
+    .proof-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #fff;
     }
 
     .proof-arrow {
@@ -442,14 +438,9 @@
 
     .proof-dot.active { background: var(--verde-escuro); }
 
-    /* ===== FIM PROVA SOCIAL ===== */
-
-
-
     /* ===== MOBILE OTIMIZADO ===== */
     @media (max-width: 480px) {
 
-      /* Hero */
       .hero {
         padding: 20px 16px 8px;
       }
@@ -476,7 +467,6 @@
         margin-bottom: 10px;
       }
 
-      /* Botões */
       .btn-cta-wrap {
         padding: 8px 16px 24px;
       }
@@ -487,7 +477,6 @@
         border-radius: 8px;
       }
 
-      /* Seção included */
       .section-heading-box,
       .faq-heading-box {
         margin-left: 12px;
@@ -521,7 +510,6 @@
         min-width: 22px;
       }
 
-      /* Closing box */
       .closing-box {
         margin-left: 12px;
         margin-right: 12px;
@@ -532,7 +520,6 @@
         font-size: 0.97rem;
       }
 
-      /* FAQ */
       .faq-card {
         margin-left: 12px;
         margin-right: 12px;
@@ -548,18 +535,15 @@
         font-size: 0.9rem;
       }
 
-      /* Carrossel */
       .proof-card {
         flex: 0 0 85vw;
-        height: auto;
       }
 
       .proof-arrow {
         display: none;
       }
 
-      /* Preço inline */
-      p[style*="1.5rem"] {
+      .hero-price-text {
         font-size: 1.3rem !important;
       }
     }
@@ -585,21 +569,16 @@
       <span class="hero-title-line2">🐾Meu Cão Educado</span>
     </h1>
 
+    <!-- Wrapper com aspect-ratio fixo → CLS zero mesmo antes da imagem carregar -->
     <div class="hero-image-wrap">
-      <!-- SUBSTITUA O LINK ABAIXO PELA SUA IMAGEM REAL -->
       <img
         src="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png"
         alt="Mockup do curso Método Meu Cão Educado — Diego Lima Veterinário & Adestrador"
         fetchpriority="high"
-        decoding="async"
+        decoding="sync"
         width="560"
         height="350"
-        style="aspect-ratio: 560/350; width:100%; height:auto;"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       />
-      <div class="hero-image-placeholder" style="display:none;">
-        [SUBSTITUA PELA IMAGEM DO PRODUTO]
-      </div>
     </div>
 
     <p class="hero-subtitle">
@@ -612,7 +591,7 @@
   <section class="proof-section">
     <div style="text-align:center; padding: 32px 20px 16px;">
       <div style="border: 2px solid var(--verde-escuro); border-radius: 10px; padding: 14px 24px; max-width: 700px; margin: 0 auto;">
-        <h2 style="font-family:'DM Sans',sans-serif; font-size:clamp(1.1rem,5vw,1.5rem); font-weight:800; color:var(--verde-escuro); line-height:1.2; letter-spacing:0.02em;">
+        <h2 style="font-family:var(--font-sans); font-size:clamp(1.1rem,5vw,1.5rem); font-weight:800; color:var(--verde-escuro); line-height:1.2; letter-spacing:0.02em;">
           VEJA O QUE ACONTECE EM POUCAS SEMANAS
         </h2>
       </div>
@@ -621,32 +600,32 @@
     <div class="proof-carousel-wrap">
       <div class="proof-carousel" id="proofCarousel">
 
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp" alt="Depoimento Jeane e Jade" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp" alt="Depoimento Jeane e Jade" width="280" height="350" loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela_fly.webp" alt="Depoimento Rosangela e Fly" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela_fly.webp" alt="Depoimento Rosangela e Fly" width="280" height="350" loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp" alt="Depoimento Pedro e Rock" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp" alt="Depoimento Pedro e Rock" width="280" height="350" loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp" alt="Depoimento card7" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp" alt="Depoimento card7" width="280" height="350" loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp" alt="Depoimento Beto e Max" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp" alt="Depoimento Beto e Max" width="280" height="350" loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp" alt="Depoimento Kiara e Maia" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp" alt="Depoimento Kiara e Maia" width="280" height="350" loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp" alt="Depoimento Nero" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp" alt="Depoimento Nero" width="280" height="350" loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp" alt="Depoimento Ros e Duque" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp" alt="Depoimento Ros e Duque" width="280" height="350" loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp" alt="Depoimento card8" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp" alt="Depoimento card8" width="280" height="350" loading="lazy" decoding="async">
         </div>
 
       </div>
@@ -666,7 +645,7 @@
 
     <div class="included-item">
       <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
+        <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
         Qualquer pessoa consegue aplicar, mesmo sem nunca ter treinado um cão antes.
@@ -675,7 +654,7 @@
 
     <div class="included-item">
       <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
+        <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
         Cabe na sua rotina: menos de 10 minutos por dia já mudam o comportamento do seu cão.
@@ -684,7 +663,7 @@
 
     <div class="included-item">
       <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
+        <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
         Você entende como o seu cão aprende de verdade, e isso faz tudo funcionar mais rápido.
@@ -693,7 +672,7 @@
 
     <div class="included-item">
       <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
+        <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
         Seu cão para de ignorar você na rua e começa a prestar atenção mesmo com distrações ao redor.
@@ -702,7 +681,7 @@
 
     <div class="included-item">
       <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
+        <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
         Você descobre como fazer seu cão querer obedecer, sem ter que mostrar o petisco e sem repetir o comando dez vezes.
@@ -711,7 +690,7 @@
 
     <div class="included-item">
       <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
+        <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
         Passeios deixam de ser uma batalha. Seu cão aprende a se controlar perto de outros cães, pessoas e movimento.
@@ -720,7 +699,7 @@
 
     <div class="included-item">
       <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
+        <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
         Você vê na prática como eu faço com cães reais de clientes, de raças e tamanhos diferentes.
@@ -729,22 +708,19 @@
 
     <div class="included-item">
       <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
+        <svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
         Você não fica travado numa dúvida: pode perguntar direto para mim nos comentários de cada aula.
       </div>
     </div>
 
-
-
   </div>
 
-  <p style="text-align:center; font-family:'DM Sans',sans-serif; font-size:1.9rem; font-weight:700; color:#3B4D1E; margin: 20px 0 4px;">Por apenas R$ 197,00</p>
+  <p class="hero-price-text" style="text-align:center; font-family:var(--font-sans); font-size:1.9rem; font-weight:700; color:#3B4D1E; margin: 20px 0 4px;">Por apenas R$ 197,00</p>
 
   <!-- Segundo CTA -->
   <div class="btn-cta-wrap" style="padding-top: 24px;">
-    <!-- SUBSTITUA O LINK ABAIXO PELO SEU CHECKOUT -->
     <a href="#checkout" onclick="event.preventDefault(); document.getElementById('checkout').scrollIntoView({behavior:'smooth'})" class="btn-cta">
       QUERO MEU CÃO OBEDIENTE!
     </a>
@@ -760,7 +736,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           Funciona para qualquer raça e idade?
         </button>
         <div class="faq-answer">
@@ -770,7 +746,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           Preciso ter experiência?
         </button>
         <div class="faq-answer">
@@ -780,7 +756,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           Preciso de algum equipamento especial?
         </button>
         <div class="faq-answer">
@@ -790,7 +766,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           Funciona para cão teimoso?
         </button>
         <div class="faq-answer">
@@ -800,7 +776,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           Preciso de horas de treino por dia?
         </button>
         <div class="faq-answer">
@@ -810,7 +786,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           Vai ser difícil de aplicar?
         </button>
         <div class="faq-answer">
@@ -820,7 +796,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           E se eu tiver dúvidas?
         </button>
         <div class="faq-answer">
@@ -830,7 +806,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           Como acessar o conteúdo?
         </button>
         <div class="faq-answer">
@@ -840,7 +816,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           Como o conteúdo está organizado?
         </button>
         <div class="faq-answer">
@@ -850,7 +826,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           Por quanto tempo terei acesso?
         </button>
         <div class="faq-answer">
@@ -860,7 +836,7 @@
 
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+          <span class="faq-plus" aria-hidden="true">+</span>
           E se eu não gostar? Tem garantia?
         </button>
         <div class="faq-answer">
@@ -875,21 +851,36 @@
   <!-- ===== CHECKOUT EDUZZ ===== -->
   <div id="checkout" style="max-width: 700px; margin: 0 auto; padding: 0 20px 40px;">
     <div id="elements"></div>
-    <script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" async type="module"></script>
+    <!-- Eduzz carregado apenas após interação do usuário para não bloquear LCP/TBT -->
     <script>
       (function () {
-        const load = function () {
+        var eduzzLoaded = false;
+        function loadEduzz() {
+          if (eduzzLoaded) return;
+          eduzzLoaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://cdn.eduzzcdn.com/sun/bridge/bridge.js';
+          s.type = 'module';
+          s.onload = function () {
             window.Eduzz.Checkout.init({
               contentId: "lpos7ejv",
               target: "elements",
               errorCover: true
             });
+          };
+          document.head.appendChild(s);
         }
-        if (document.readyState === 'complete') {
-            load();
-            return;
+        // Carrega ao rolar até o checkout ou ao primeiro toque/scroll
+        var target = document.getElementById('checkout');
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) { loadEduzz(); io.disconnect(); }
+          }, { rootMargin: '200px' });
+          io.observe(target);
+        } else {
+          // Fallback: carrega após 3 s
+          setTimeout(loadEduzz, 3000);
         }
-        window.addEventListener('load', load);
       })();
     </script>
   </div>
@@ -901,54 +892,55 @@
   </footer>
 
   <script>
+    // ===== FAQ =====
     function toggleFaq(btn) {
-      const item = btn.parentElement;
+      var item = btn.parentElement;
       item.classList.toggle('open');
     }
 
-    // ===== CARROSSEL PROVA SOCIAL =====
-    // Defer initialization to avoid blocking main thread
+    // ===== CARROSSEL — sem reflow forçado =====
     function initCarousel() {
-      const carousel = document.getElementById('proofCarousel');
-      const dotsWrap = document.getElementById('proofDots');
+      var carousel = document.getElementById('proofCarousel');
+      var dotsWrap = document.getElementById('proofDots');
       if (!carousel || !dotsWrap) return;
 
-      const cards = carousel.querySelectorAll('.proof-card');
+      var cards = carousel.querySelectorAll('.proof-card');
       if (!cards.length) return;
 
-      // Batch DOM writes — build fragment first, then insert once
-      const frag = document.createDocumentFragment();
-      cards.forEach((_, i) => {
-        const dot = document.createElement('div');
+      // Monta dots em fragmento — 1 único reflow
+      var frag = document.createDocumentFragment();
+      cards.forEach(function (_, i) {
+        var dot = document.createElement('div');
         dot.className = 'proof-dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => {
-          // Batch read, then write
-          const targetLeft = cards[i].offsetLeft - 20;
+        dot.setAttribute('aria-label', 'Depoimento ' + (i + 1));
+        dot.onclick = function () {
+          // Lê offsetLeft ANTES de qualquer escrita
+          var targetLeft = cards[i].offsetLeft - 20;
           carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
         };
         frag.appendChild(dot);
       });
       dotsWrap.appendChild(frag);
 
-      // Throttle scroll handler to avoid layout thrashing
-      let scrollTicking = false;
-      carousel.addEventListener('scroll', () => {
+      // Scroll handler throttled com rAF — evita layout thrashing
+      var scrollTicking = false;
+      carousel.addEventListener('scroll', function () {
         if (scrollTicking) return;
         scrollTicking = true;
-        requestAnimationFrame(() => {
-          // Batch all reads first
-          const carouselLeft = carousel.getBoundingClientRect().left;
-          const positions = Array.from(cards).map(card => ({
-            dist: Math.abs(card.getBoundingClientRect().left - carouselLeft)
-          }));
-          // Then find closest
-          let closest = 0;
-          let minDist = Infinity;
-          positions.forEach((p, i) => {
-            if (p.dist < minDist) { minDist = p.dist; closest = i; }
+        requestAnimationFrame(function () {
+          // Todas as leituras primeiro
+          var carouselLeft = carousel.getBoundingClientRect().left;
+          var positions = Array.from(cards).map(function (card) {
+            return Math.abs(card.getBoundingClientRect().left - carouselLeft);
           });
-          // Then batch DOM writes
-          dotsWrap.querySelectorAll('.proof-dot').forEach((d, i) => {
+          // Acha o mais próximo
+          var closest = 0;
+          var minDist = Infinity;
+          positions.forEach(function (dist, i) {
+            if (dist < minDist) { minDist = dist; closest = i; }
+          });
+          // Todas as escritas depois
+          dotsWrap.querySelectorAll('.proof-dot').forEach(function (d, i) {
             d.classList.toggle('active', i === closest);
           });
           scrollTicking = false;
@@ -957,21 +949,24 @@
     }
 
     function scrollProof(dir) {
-      const carousel = document.getElementById('proofCarousel');
+      var carousel = document.getElementById('proofCarousel');
       if (!carousel) return;
-      const cardW = (carousel.querySelector('.proof-card')?.offsetWidth || 280) + 14;
+      var card = carousel.querySelector('.proof-card');
+      var cardW = (card ? card.offsetWidth : 280) + 14;
       carousel.scrollBy({ left: dir * cardW, behavior: 'smooth' });
     }
 
-    // Defer carousel init to after page load
+    // Inicializa carrossel após paint, sem bloquear thread principal
     if (document.readyState === 'complete') {
-      initCarousel();
+      requestIdleCallback ? requestIdleCallback(initCarousel) : setTimeout(initCarousel, 100);
     } else {
-      window.addEventListener('load', initCarousel, { once: true });
+      window.addEventListener('load', function () {
+        requestIdleCallback ? requestIdleCallback(initCarousel) : setTimeout(initCarousel, 100);
+      }, { once: true });
     }
   </script>
 
-  <!-- Meta Pixel Code -->
+  <!-- Meta Pixel — defer para não bloquear TBT -->
   <script defer>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -987,9 +982,8 @@
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Meta Pixel Code -->
 
-  <!-- Microsoft Clarity -->
+  <!-- Microsoft Clarity — defer -->
   <script defer>
   (function(c,l,a,r,i,t,y){
       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -997,7 +991,6 @@
       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "w3fnz1hr1l");
   </script>
-  <!-- End Microsoft Clarity -->
 
 </body>
 </html>
