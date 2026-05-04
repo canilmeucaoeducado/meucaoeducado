@@ -355,8 +355,14 @@
 
     .proof-carousel-wrap {
       position: relative;
+      /* sem overflow:hidden aqui para não cortar os dots */
+      padding: 0 0 8px;
+    }
+
+    /* inner: controla overflow só das setas, não afeta os dots fora */
+    .proof-carousel-inner {
+      position: relative;
       overflow: hidden;
-      padding: 0 0 40px;
     }
 
     .proof-carousel {
@@ -598,6 +604,7 @@
     </div>
 
     <div class="proof-carousel-wrap">
+      <div class="proof-carousel-inner">
       <div class="proof-carousel" id="proofCarousel">
 
         <div class="proof-card">
@@ -632,6 +639,7 @@
 
       <button class="proof-arrow proof-arrow-prev" onclick="scrollProof(-1)" aria-label="Anterior">&#8592;</button>
       <button class="proof-arrow proof-arrow-next" onclick="scrollProof(1)" aria-label="Próximo">&#8594;</button>
+      </div><!-- /.proof-carousel-inner -->
       <div class="proof-dots" id="proofDots"></div>
     </div>
   </section>
