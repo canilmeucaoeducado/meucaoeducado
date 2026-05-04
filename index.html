@@ -603,7 +603,7 @@
     </div>
 
     <p class="hero-subtitle">
-      Um programa completo feito especialmente para cães cheios de energia ou reativos. E para pessoas que querem seus cães obedientes, mesmo em ambientes com distrações.
+      Um programa completo feito especialmente para quem tem um cão cheio de energia, reativo ou que simplesmente não obedece quando tem distração.
     </p>
 
   </section>
@@ -659,7 +659,7 @@
 
   <!-- ===== O QUE ESTÁ INCLUÍDO ===== -->
   <div class="section-heading-box">
-    <h2>O QUE ESTÁ INCLUÍDO?</h2>
+    <h2>POR QUE FUNCIONA?</h2>
   </div>
 
   <div class="included-card">
@@ -669,7 +669,7 @@
         <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
-        <strong>Um programa completo dividido em 9 módulos.</strong> Fácil de seguir mesmo sem experiência.
+        Qualquer pessoa consegue aplicar, mesmo sem nunca ter treinado um cão antes.
       </div>
     </div>
 
@@ -678,7 +678,7 @@
         <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
-        <strong>Uma rotina simples que você vai conseguir manter:</strong> treinos curtos com menos de 10 minutos. Você aplica em casa e durante os passeios normais do dia.
+        Cabe na sua rotina: menos de 10 minutos por dia já mudam o comportamento do seu cão.
       </div>
     </div>
 
@@ -687,7 +687,7 @@
         <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
-        <strong>Aprenda como conduzir as atividades, motivar o cão, como os cães aprendem e evitar erros comuns.</strong> Base para todo o programa.
+        Você entende como o seu cão aprende de verdade, e isso faz tudo funcionar mais rápido.
       </div>
     </div>
 
@@ -696,7 +696,7 @@
         <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
-        <strong>Como construir confiança e conexão com o seu cão:</strong> ajude seu cão a se manter conectado a você enquanto explora o ambiente.
+        Seu cão para de ignorar você na rua e começa a prestar atenção mesmo com distrações ao redor.
       </div>
     </div>
 
@@ -705,7 +705,7 @@
         <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
-        <strong>Como mudar o que seu cão entende por "obedecer":</strong> mudanças simples que fazem o cão querer te obedecer, mesmo com distrações.
+        Você descobre como fazer seu cão querer obedecer, sem ter que mostrar o petisco e sem repetir o comando dez vezes.
       </div>
     </div>
 
@@ -714,7 +714,7 @@
         <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
-        <strong>Como lidar com distrações em casa e na rua:</strong> outros cães, cheiros, movimento, barulho. O que fazer sem gritar ou se irritar.
+        Passeios deixam de ser uma batalha. Seu cão aprende a se controlar perto de outros cães, pessoas e movimento.
       </div>
     </div>
 
@@ -723,7 +723,7 @@
         <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
-        <strong>Exemplos reais com cães de raças, tamanhos e idades diferentes:</strong> para você ver exatamente como fazer.
+        Você vê na prática como eu faço com cães reais de clientes, de raças e tamanhos diferentes.
       </div>
     </div>
 
@@ -732,18 +732,10 @@
         <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
       </div>
       <div class="included-text">
-        <strong>Tire suas dúvidas diretamente com Diego Lima Veterinário & Adestrador,</strong> nos comentários de cada aula.
+        Você não fica travado numa dúvida: pode perguntar direto para mim nos comentários de cada aula.
       </div>
     </div>
 
-    <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Acesso imediato por 2 anos.</strong> Disponível em qualquer dispositivo: celular, tablet ou computador.
-      </div>
-    </div>
 
 
   </div>
@@ -753,7 +745,7 @@
   <!-- Segundo CTA -->
   <div class="btn-cta-wrap" style="padding-top: 24px;">
     <!-- SUBSTITUA O LINK ABAIXO PELO SEU CHECKOUT -->
-    <a href="https://sun.eduzz.com/1W3ZEGD5W2" class="btn-cta">
+    <a href="#checkout" onclick="event.preventDefault(); document.getElementById('checkout').scrollIntoView({behavior:'smooth'})" class="btn-cta">
       QUERO MEU CÃO OBEDIENTE!
     </a>
   </div>
@@ -879,12 +871,27 @@
     </div>
   </div>
 
-  <!-- Terceiro CTA (final) -->
-  <div class="btn-cta-wrap" style="padding-bottom: 40px;">
-    <!-- SUBSTITUA O LINK ABAIXO PELO SEU CHECKOUT -->
-    <a href="https://sun.eduzz.com/1W3ZEGD5W2" class="btn-cta">
-      QUERO MEU CÃO OBEDIENTE!
-    </a>
+
+  <!-- ===== CHECKOUT EDUZZ ===== -->
+  <div id="checkout" style="max-width: 700px; margin: 0 auto; padding: 0 20px 40px;">
+    <div id="elements"></div>
+    <script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" async type="module"></script>
+    <script>
+      (function () {
+        const load = function () {
+            window.Eduzz.Checkout.init({
+              contentId: "lpos7ejv",
+              target: "elements",
+              errorCover: true
+            });
+        }
+        if (document.readyState === 'complete') {
+            load();
+            return;
+        }
+        window.addEventListener('load', load);
+      })();
+    </script>
   </div>
 
   <!-- ===== FOOTER ===== -->
