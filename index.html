@@ -8,23 +8,30 @@
 
   <!-- Segurança via meta tags (GitHub Pages não permite headers HTTP) -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- Preconnect crítico -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdn.eduzzcdn.com" crossorigin />
   <link rel="preconnect" href="https://canilmeucaoeducado.github.io" crossorigin />
-  <link rel="dns-prefetch" href="https://connect.facebook.net" />
-  <link rel="dns-prefetch" href="https://www.clarity.ms" />
 
   <!-- Preload do LCP (mockup hero) -->
   <link rel="preload" as="image" href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png" />
 
   <!-- Google Fonts não bloqueante (print trick) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap&font-display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" /></noscript>
   <style>
+    /* Font metric overrides para reduzir CLS durante troca de fontes */
+    @font-face {
+      font-family: 'DM Sans Fallback';
+      src: local('Arial');
+      ascent-override: 94%;
+      descent-override: 25%;
+      line-gap-override: 0%;
+      size-adjust: 103%;
+    }
     :root {
       --verde-escuro:  #3B4D1E;
       --verde-medio:   #5A6B2D;
@@ -34,7 +41,7 @@
       --creme-verde:   #E1E1D2;
       --branco:        #FFFFFF;
       --marrom-terra:  #4B3C1E;
-      --font-sans: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-sans: 'DM Sans', 'DM Sans Fallback', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     }
 
     * {
@@ -622,31 +629,31 @@
       <div class="proof-carousel" id="proofCarousel">
 
         <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp" alt="Depoimento Jeane e Jade" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp" alt="Depoimento Jeane e Jade" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
         </div>
         <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela_fly.webp" alt="Depoimento Rosangela e Fly" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela_fly.webp" alt="Depoimento Rosangela e Fly" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
         </div>
         <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp" alt="Depoimento Pedro e Rock" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp" alt="Depoimento Pedro e Rock" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
         </div>
         <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp" alt="Depoimento card7" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp" alt="Depoimento card7" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
         </div>
         <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp" alt="Depoimento Beto e Max" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp" alt="Depoimento Beto e Max" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
         </div>
         <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp" alt="Depoimento Kiara e Maia" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp" alt="Depoimento Kiara e Maia" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
         </div>
         <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp" alt="Depoimento Nero" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp" alt="Depoimento Nero" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
         </div>
         <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp" alt="Depoimento Ros e Duque" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp" alt="Depoimento Ros e Duque" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
         </div>
         <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp" alt="Depoimento card8" width="300" height="375" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp" alt="Depoimento card8" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
         </div>
 
       </div>
@@ -873,22 +880,40 @@
 
   <!-- ===== CHECKOUT EDUZZ ===== -->
   <div id="checkout" style="max-width: 700px; margin: 0 auto; padding: 0 20px 40px;">
-    <div id="elements"></div>
-    <script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" async type="module"></script>
+    <div id="elements" style="min-height: 520px;"></div>
     <script>
       (function () {
-        const load = function () {
+        var eduzzLoaded = false;
+        function loadEduzz() {
+          if (eduzzLoaded) return;
+          eduzzLoaded = true;
+          var s = document.createElement('script');
+          s.src = 'https://cdn.eduzzcdn.com/sun/bridge/bridge.js';
+          s.async = true;
+          s.type = 'module';
+          s.onload = function () {
             window.Eduzz.Checkout.init({
               contentId: "lpos7ejv",
               target: "elements",
               errorCover: true
             });
+          };
+          document.head.appendChild(s);
         }
-        if (document.readyState === 'complete') {
-            load();
-            return;
+
+        var target = document.getElementById('checkout');
+        if ('IntersectionObserver' in window) {
+          var observer = new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) {
+              loadEduzz();
+              observer.disconnect();
+            }
+          }, { rootMargin: '200px' });
+          observer.observe(target);
+        } else {
+          // Fallback para browsers sem IntersectionObserver
+          window.addEventListener('load', loadEduzz);
         }
-        window.addEventListener('load', load);
       })();
     </script>
   </div>
@@ -970,33 +995,32 @@
     }
   </script>
 
-  <!-- Meta Pixel Code -->
-  <script defer>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1336628157581322');
-  fbq('track', 'PageView');
+  <!-- Meta Pixel + Microsoft Clarity — carregados após page load para não bloquear TBT -->
+  <script>
+  window.addEventListener('load', function () {
+    // Meta Pixel
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1336628157581322');
+    fbq('track', 'PageView');
+
+    // Microsoft Clarity
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "w3fnz1hr1l");
+  }, { once: true });
   </script>
   <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Meta Pixel Code -->
-
-  <!-- Microsoft Clarity -->
-  <script defer>
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "w3fnz1hr1l");
-  </script>
-  <!-- End Microsoft Clarity -->
 
 </body>
 </html>
