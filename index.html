@@ -13,7 +13,6 @@
   <!-- Preconnect crítico -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.eduzzcdn.com" crossorigin />
   <link rel="preconnect" href="https://canilmeucaoeducado.github.io" crossorigin />
 
   <!-- Preload do LCP (mockup hero) -->
@@ -577,6 +576,208 @@
       .proof-card { flex: 0 0 92vw; }
     }
 
+    /* ===== SELETOR DE PLANOS ===== */
+    .plans-wrap {
+      max-width: 700px;
+      margin: 28px auto 0;
+      padding: 0 20px 16px;
+    }
+
+    .plans-title {
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      margin-bottom: 16px;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .plan-card {
+      border: 2px solid var(--verde-medio);
+      border-radius: 16px;
+      padding: 22px 18px 20px;
+      background: var(--creme-verde);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+
+    .plan-card-featured {
+      border-color: var(--verde-escuro);
+      background: var(--branco);
+      box-shadow: 0 4px 18px rgba(59,77,30,0.13);
+    }
+
+    .plan-popular-tag {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--verde-escuro);
+      color: var(--branco);
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .plan-badge {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .plan-badge-basic {
+      background: var(--sage-claro);
+      color: var(--verde-escuro);
+    }
+
+    .plan-badge-featured {
+      background: var(--verde-escuro);
+      color: var(--branco);
+    }
+
+    .plan-price-wrap {
+      text-align: center;
+      line-height: 1;
+    }
+
+    .plan-price {
+      font-family: var(--font-sans);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--verde-escuro);
+    }
+
+    .plan-price-cents {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      vertical-align: super;
+    }
+
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      flex: 1;
+    }
+
+    .plan-features li {
+      font-family: var(--font-sans);
+      font-size: 0.83rem;
+      color: var(--marrom-terra);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.4;
+    }
+
+    .plan-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--verde-medio);
+      font-weight: 700;
+    }
+
+    .plan-card-featured .plan-features li::before {
+      color: var(--verde-escuro);
+    }
+
+    .btn-plan {
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 13px 10px;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+      margin-top: 4px;
+    }
+
+    .btn-plan:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-plan-basic {
+      background: var(--verde-medio);
+      color: var(--branco);
+    }
+
+    .btn-plan-basic:hover {
+      background: var(--verde-escuro);
+    }
+
+    .btn-plan-featured {
+      background: var(--verde-escuro);
+      color: var(--branco);
+    }
+
+    .btn-plan-featured:hover {
+      background: var(--marrom-terra);
+    }
+
+    .plans-guarantee {
+      text-align: center;
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      color: var(--verde-cinza);
+      margin-top: 14px;
+    }
+
+    @media (max-width: 420px) {
+      .plans-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+      .plan-card {
+        padding: 18px 12px 16px;
+      }
+      .plan-price {
+        font-size: 1.8rem;
+      }
+      .plan-features li {
+        font-size: 0.78rem;
+      }
+      .btn-plan {
+        font-size: 0.72rem;
+        padding: 11px 6px;
+      }
+    }
+
+    @media (max-width: 340px) {
+      .plans-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
 </head>
 
@@ -747,13 +948,51 @@
 
   </div>
 
-  <p style="text-align:center; font-family:'DM Sans',sans-serif; font-size:1.9rem; font-weight:700; color:#3B4D1E; margin: 20px 0 4px;">Por apenas R$ 197,00</p>
+  <!-- ===== SELETOR DE PLANOS ===== -->
+  <div class="plans-wrap">
+    <p class="plans-title">Escolha seu plano</p>
+    <div class="plans-grid">
 
-  <!-- Segundo CTA -->
-  <div class="btn-cta-wrap" style="padding-top: 24px;">
-    <a href="#checkout" onclick="event.preventDefault(); document.getElementById('checkout').scrollIntoView({behavior:'smooth'})" class="btn-cta">
-      QUERO MEU CÃO OBEDIENTE!
-    </a>
+      <!-- Plano 6 meses -->
+      <div class="plan-card">
+        <div class="plan-badge plan-badge-basic">Acesso 6 meses</div>
+        <div class="plan-price-wrap">
+          <span class="plan-price">R$ 97</span>
+          <span class="plan-price-cents">,00</span>
+        </div>
+        <ul class="plan-features">
+          <li>Acesso por 6 meses</li>
+          <li>Programa completo com +70 aulas</li>
+          <li>Comentários nas aulas</li>
+          <li>Sem atualizações no conteúdo</li>
+        </ul>
+        <a href="https://chk.eduzz.com/797ZD6PV0E" class="btn-plan btn-plan-basic" target="_blank" rel="noopener">
+          QUERO ESTE PLANO
+        </a>
+      </div>
+
+      <!-- Plano 2 anos — destaque -->
+      <div class="plan-card plan-card-featured">
+        <div class="plan-popular-tag">MAIS ESCOLHIDO</div>
+        <div class="plan-badge plan-badge-featured">Acesso 2 anos</div>
+        <div class="plan-price-wrap">
+          <span class="plan-price">R$ 197</span>
+          <span class="plan-price-cents">,00</span>
+        </div>
+        <ul class="plan-features">
+          <li><strong>Acesso por 2 anos</strong></li>
+          <li>Programa completo com +70 aulas</li>
+          <li>Comentários nas aulas</li>
+          <li><strong>Atualizações e extras inclusos</strong></li>
+          <li><strong>1 videochamada de 50 minutos com Diego Lima</strong></li>
+        </ul>
+        <a href="https://chk.eduzz.com/1W3ZEGD5W2" class="btn-plan btn-plan-featured" target="_blank" rel="noopener">
+          QUERO ESTE PLANO
+        </a>
+      </div>
+
+    </div>
+    <p class="plans-guarantee">🔒 Garantia de 7 dias — reembolso total sem perguntas</p>
   </div>
 
   <!-- ===== FAQs ===== -->
@@ -857,16 +1096,6 @@
       <div class="faq-item">
         <button class="faq-question" onclick="toggleFaq(this)">
           <span class="faq-plus">+</span>
-          Por quanto tempo terei acesso?
-        </button>
-        <div class="faq-answer">
-          Durante 2 anos, você poderá acessar todas as atividades na plataforma, incluindo atualizações e conteúdos extras que forem adicionados nesse período.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
           E se eu não gostar? Tem garantia?
         </button>
         <div class="faq-answer">
@@ -877,46 +1106,6 @@
     </div>
   </div>
 
-
-  <!-- ===== CHECKOUT EDUZZ ===== -->
-  <div id="checkout" style="max-width: 700px; margin: 0 auto; padding: 0 20px 40px;">
-    <div id="elements" style="min-height: 520px;"></div>
-    <script>
-      (function () {
-        var eduzzLoaded = false;
-        function loadEduzz() {
-          if (eduzzLoaded) return;
-          eduzzLoaded = true;
-          var s = document.createElement('script');
-          s.src = 'https://cdn.eduzzcdn.com/sun/bridge/bridge.js';
-          s.async = true;
-          s.type = 'module';
-          s.onload = function () {
-            window.Eduzz.Checkout.init({
-              contentId: "lpos7ejv",
-              target: "elements",
-              errorCover: true
-            });
-          };
-          document.head.appendChild(s);
-        }
-
-        var target = document.getElementById('checkout');
-        if ('IntersectionObserver' in window) {
-          var observer = new IntersectionObserver(function (entries) {
-            if (entries[0].isIntersecting) {
-              loadEduzz();
-              observer.disconnect();
-            }
-          }, { rootMargin: '200px' });
-          observer.observe(target);
-        } else {
-          // Fallback para browsers sem IntersectionObserver
-          window.addEventListener('load', loadEduzz);
-        }
-      })();
-    </script>
-  </div>
 
   <!-- ===== FOOTER ===== -->
   </main>
