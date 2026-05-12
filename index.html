@@ -953,7 +953,7 @@
     <p style="font-family:var(--font-sans); font-size:2.2rem; font-weight:700; color:var(--verde-escuro); margin-bottom:16px;">
       Por apenas R$ 97,00
     </p>
-    <a href="https://chk.eduzz.com/dwt7yr3b" class="btn-cta" target="_blank" rel="noopener" style="max-width:420px; display:inline-block;">
+    <a href="#checkout" class="btn-cta" style="max-width:420px; display:inline-block;" onclick="event.preventDefault(); document.getElementById('checkout').scrollIntoView({behavior:'smooth'});">
       QUERO MEU CÃO OBEDIENTE!
     </a>
     <p class="plans-guarantee" style="margin-top:16px;">🔒 Garantia de 7 dias — reembolso total sem perguntas</p>
@@ -1072,6 +1072,28 @@
     </div>
   </div>
 
+
+  <!-- ===== CHECKOUT EDUZZ ===== -->
+  <div id="checkout" style="max-width:700px; margin:32px auto 0; padding:0 20px;">
+    <div id="elements"></div>
+    <script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" async type="module"></script>
+    <script>
+      (function () {
+        const load = function () {
+          window.Eduzz.Checkout.init({
+            contentId: "1W3ZEGD5W2",
+            target: "elements",
+            errorCover: true
+          });
+        }
+        if (document.readyState === 'complete') {
+          load();
+          return;
+        }
+        window.addEventListener('load', load);
+      })();
+    </script>
+  </div>
 
   <!-- ===== FOOTER ===== -->
   </main>
