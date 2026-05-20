@@ -19,18 +19,29 @@
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
+  <!-- OTIMIZAÇÃO: apenas 2 preconnects essenciais (fontes) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.eduzzcdn.com" crossorigin />
-  <link rel="preconnect" href="https://elements2.eduzz.com" crossorigin />
 
-  <link rel="preload" as="image" fetchpriority="high" href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp" type="image/webp" />
+  <!-- LCP hero images: preload explícito -->
+  <link rel="preload" as="image" fetchpriority="high"
+        href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp"
+        type="image/webp" />
+  <link rel="preload" as="image" fetchpriority="high"
+        href="https://canilmeucaoeducado.github.io/meucaoeducado/assinatura%20diego%20lima.webp"
+        type="image/webp" />
 
-  <!-- DM Sans + Dancing Script (cursiva para o nome) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" media="print" onload="this.media='all'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" /></noscript>
+  <!-- Fonte: swap para evitar FOIT; carrega de forma não-bloqueante -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=Dancing+Script:wght@700&display=swap"
+        media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;900&family=Dancing+Script:wght@700&display=swap" />
+  </noscript>
 
   <style>
+    /* === FONT FALLBACK — evita CLS de fonte === */
     @font-face {
       font-family: 'DM Sans Fallback';
       src: local('Arial');
@@ -38,31 +49,37 @@
       descent-override: 25%;
       line-gap-override: 0%;
       size-adjust: 103%;
-      font-display: swap;
     }
 
+    /* === DESIGN TOKENS === */
     :root {
       --verde-escuro:  #0E8A3E;
       --verde-medio:   #1DA752;
       --verde-oliva:   #3DBF6A;
-      --verde-cinza:   #2D7A4A;
       --sage-claro:    #A8DDB8;
       --creme-verde:   #E6F5EC;
       --branco:        #FFFFFF;
-      --marrom-terra:  #111111;
-      --font-sans: 'DM Sans', 'DM Sans Fallback', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --preto:         #111111;
+      --font-sans: 'DM Sans', 'DM Sans Fallback', system-ui, sans-serif;
       --font-cursiva: 'Dancing Script', cursive;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* === RESET MÍNIMO === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* === BASE === */
     body {
-      background-color: var(--branco);
+      background: var(--branco);
       font-family: var(--font-sans);
-      color: var(--marrom-terra);
+      color: var(--preto);
       font-size: 16px;
       line-height: 1.6;
+      /* Evita reflow de scrollbar no carrossel */
+      overflow-x: hidden;
     }
+
+    /* Âncora de scroll suave — sem JS inline -->
+    html { scroll-behavior: smooth; }
 
     .container {
       max-width: 700px;
@@ -70,7 +87,7 @@
       padding: 0 20px;
     }
 
-    /* ===== HERO ===== */
+    /* === HERO === */
     .hero {
       padding: 28px 20px 0;
       text-align: center;
@@ -78,7 +95,15 @@
       margin: 0 auto;
     }
 
-    /* Nome em cursiva — igual ao "Courtney Downes" */
+    /* Assinatura: dimensões fixas evitam CLS */
+    .hero-sig {
+      width: 220px;
+      height: 86px;
+      max-width: 60%;
+      display: inline-block;
+      margin-bottom: 16px;
+    }
+
     .hero-name {
       font-family: var(--font-cursiva);
       font-size: clamp(1.8rem, 7vw, 2.4rem);
@@ -89,81 +114,63 @@
       display: block;
     }
 
-    /* Promessa em bold grande */
     .hero-promise {
-      font-family: var(--font-sans);
       font-size: clamp(1.7rem, 7vw, 2.5rem);
       font-weight: 900;
-      color: var(--marrom-terra);
       line-height: 1.15;
       margin-bottom: 14px;
-      -webkit-text-stroke: 0.5px currentColor;
     }
 
-    .hero-promise u {
-      text-decoration-color: var(--verde-medio);
-      text-decoration-thickness: 3px;
-    }
+    .hero-promise u { text-decoration-color: var(--verde-medio); text-decoration-thickness: 3px; }
 
-    /* Estrelas */
-    .hero-stars {
-      color: #C8973A;
-      font-size: 1.4rem;
-      letter-spacing: 2px;
-      margin-bottom: 18px;
-      display: block;
-    }
-
-    /* Mockup */
+    /* Mockup — aspect-ratio reserva espaço → sem CLS */
     .hero-image-wrap {
       margin: 0 auto 20px;
       max-width: 560px;
-      aspect-ratio: 560/350;
+      /* Reserva espaço exato: 560x350 = 16/10 */
+      aspect-ratio: 560 / 350;
       contain: layout;
+      width: 100%;
     }
 
     .hero-image-wrap img {
       width: 100%;
+      height: auto;
       border-radius: 16px;
       display: block;
     }
 
     .hero-image-placeholder {
       width: 100%;
-      aspect-ratio: 16/10;
+      aspect-ratio: 16 / 10;
       background: linear-gradient(135deg, var(--creme-verde) 0%, #d0d0bc 100%);
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--verde-escuro);
-      font-size: 0.9rem;
+      font-size: .9rem;
       border: 2px dashed var(--verde-medio);
     }
 
-    /* Subtítulo / quebra de objeções */
     .hero-subtitle {
       font-size: 1.05rem;
       font-weight: 700;
-      color: var(--marrom-terra);
       line-height: 1.6;
       margin-bottom: 6px;
-      text-align: center;
     }
 
     .hero-objections {
       list-style: none;
-      padding: 0;
       margin: 12px 0 24px;
-      text-align: center;
       display: flex;
       flex-direction: column;
       gap: 8px;
+      text-align: center;
     }
 
     .hero-objections li {
       font-size: 1rem;
-      color: var(--marrom-terra);
       line-height: 1.5;
       display: flex;
       align-items: flex-start;
@@ -175,97 +182,64 @@
       content: "✓";
       color: var(--verde-medio);
       font-weight: 900;
-      font-size: 1rem;
       flex-shrink: 0;
       margin-top: 1px;
     }
 
-    /* Preço */
-    .hero-price-label {
-      font-family: var(--font-sans);
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--marrom-terra);
-      margin-bottom: 4px;
-    }
-
-    .hero-price-value {
-      font-family: var(--font-sans);
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--verde-medio);
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    /* ===== BOTÃO CTA ===== */
+    /* === BOTÃO CTA === */
     .btn-cta {
       display: inline-block;
-      background-color: #076B2E;
-      color: #FFFFFF;
+      background: #076B2E;
+      color: #fff;
       text-decoration: none;
       border-radius: 10px;
       padding: 16px 32px;
-      font-family: var(--font-sans);
       font-weight: 700;
       font-size: 1.15rem;
-      letter-spacing: 0.03em;
+      letter-spacing: .03em;
       text-align: center;
-      transition: background-color 0.2s ease, transform 0.15s ease;
-      cursor: pointer;
       border: none;
       line-height: 1.3;
       width: 100%;
       max-width: 420px;
+      cursor: pointer;
+      /* Transições via GPU — sem reflow */
+      transition: background-color .2s, transform .15s;
+      will-change: transform;
     }
 
-    .btn-cta:hover {
-      background-color: #054F22;
-      transform: translateY(-2px);
-    }
+    .btn-cta:hover { background: #054F22; transform: translateY(-2px); }
 
     .btn-cta .btn-sub {
       display: block;
-      font-size: 0.78rem;
+      font-size: .78rem;
       font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: .08em;
       text-transform: uppercase;
-      opacity: 0.85;
+      opacity: .85;
       margin-top: 2px;
     }
 
-    .btn-cta-wrap {
-      text-align: center;
-      padding: 8px 20px 32px;
-    }
+    .btn-cta-wrap { text-align: center; padding: 8px 20px 32px; }
 
     .plans-guarantee {
       text-align: center;
-      font-family: var(--font-sans);
-      font-size: 0.82rem;
+      font-size: .82rem;
       color: #1A5C32;
       margin-top: 10px;
     }
 
-    /* ===== DIVISOR ===== */
-    .section-divider {
-      border: none;
-      border-top: 1px solid var(--creme-verde);
-      margin: 8px 0;
-    }
+    .section-divider { border: none; border-top: 1px solid var(--creme-verde); margin: 8px 0; }
 
-    /* ===== SEÇÃO WHAT'S INCLUDED ===== */
+    /* === O QUE ESTÁ INCLUÍDO === */
     .section-heading-box {
       padding: 14px 24px;
       text-align: center;
-      margin: 8px 20px 20px;
       max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 8px auto 20px;
     }
 
     .section-heading-box h2 {
-      font-family: var(--font-sans);
       color: var(--verde-medio);
       font-size: 1.5rem;
       font-weight: 700;
@@ -277,7 +251,7 @@
       padding: 24px 22px;
       max-width: 700px;
       margin: 0 auto 16px;
-      background-color: var(--creme-verde);
+      background: var(--creme-verde);
     }
 
     .included-item {
@@ -286,14 +260,11 @@
       align-items: flex-start;
       margin-bottom: 20px;
     }
-
     .included-item:last-child { margin-bottom: 0; }
 
     .check-icon {
-      width: 26px;
-      height: 26px;
-      min-width: 26px;
-      background-color: var(--verde-medio);
+      width: 26px; height: 26px; min-width: 26px;
+      background: var(--verde-medio);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -302,53 +273,36 @@
     }
 
     .check-icon svg {
-      width: 14px;
-      height: 14px;
-      fill: none;
-      stroke: white;
+      width: 14px; height: 14px;
+      fill: none; stroke: #fff;
       stroke-width: 2.5;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
 
+    .included-text { font-size: .97rem; line-height: 1.55; }
     .included-text strong { color: #065A28; font-weight: 700; }
 
-    .included-text {
-      font-size: 0.97rem;
-      line-height: 1.55;
-      color: var(--marrom-terra);
-    }
-
-    .divider {
-      border: none;
-      border-top: 1px solid var(--sage-claro);
-      margin: 20px 0;
-    }
-
+    .divider { border: none; border-top: 1px solid var(--sage-claro); margin: 20px 0; }
     .bonus-item .included-text strong { color: var(--verde-oliva); }
 
     .closing-box {
-      background-color: var(--creme-verde);
+      background: var(--creme-verde);
       border-radius: 12px;
       padding: 20px 24px;
       text-align: center;
-      margin: 20px;
       max-width: 700px;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 20px auto;
     }
 
     .closing-box p {
-      font-family: var(--font-sans);
       font-size: 1.05rem;
       font-weight: 600;
       color: var(--verde-escuro);
       line-height: 1.5;
     }
 
-    .closing-box p u { text-decoration: underline; }
-
-    /* ===== FAQs ===== */
+    /* === FAQs === */
     .faq-heading-box {
       padding: 14px 24px;
       text-align: center;
@@ -357,7 +311,6 @@
     }
 
     .faq-heading-box h2 {
-      font-family: var(--font-sans);
       color: var(--verde-escuro);
       font-size: 1.5rem;
       font-weight: 700;
@@ -369,7 +322,7 @@
       padding: 8px 0;
       max-width: 700px;
       margin: 12px auto 24px;
-      background-color: var(--creme-verde);
+      background: var(--creme-verde);
     }
 
     .faq-item { border-bottom: 1px solid var(--sage-claro); }
@@ -385,47 +338,64 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      font-family: var(--font-sans);
-      font-size: 0.97rem;
+      font-size: .97rem;
       font-weight: 700;
       color: #065A28;
-      transition: color 0.15s;
+      transition: color .15s;
     }
 
-    .faq-question:hover { color: #0E8A3E; }
+    .faq-question:hover { color: var(--verde-escuro); }
 
     .faq-plus {
       font-size: 1.1rem;
       font-weight: 400;
       min-width: 16px;
-      transition: transform 0.2s ease;
+      /* GPU — sem reflow */
+      transition: transform .2s;
       color: var(--verde-escuro);
     }
 
     .faq-item.open .faq-plus { transform: rotate(45deg); }
 
+    /* Substituímos display:none/block por height + overflow — evita CLS e reflow */
     .faq-answer {
-      display: none;
-      padding: 0 22px 16px 52px;
-      font-size: 0.95rem;
-      color: var(--marrom-terra);
+      overflow: hidden;
+      max-height: 0;
+      padding: 0 22px 0 52px;
+      font-size: .95rem;
       line-height: 1.6;
+      transition: max-height .25s ease, padding-bottom .25s ease;
     }
 
-    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-answer { max-height: 400px; padding-bottom: 16px; }
 
-    /* ===== FOOTER ===== */
+    /* === FOOTER === */
     footer {
-      background-color: #065A28;
+      background: #065A28;
       text-align: center;
       padding: 24px 20px;
-      font-size: 0.85rem;
-      color: #FFFFFF;
+      font-size: .85rem;
+      color: #fff;
       margin-top: 8px;
     }
 
-    /* ===== PROVA SOCIAL CARROSSEL ===== */
+    /* === PROVA SOCIAL === */
     .proof-section { padding-bottom: 32px; }
+
+    .proof-section-head {
+      text-align: center;
+      padding: 32px 20px 16px;
+    }
+
+    .proof-section-head h2 {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: clamp(1.1rem, 5vw, 1.5rem);
+      font-weight: 800;
+      color: var(--verde-escuro);
+      line-height: 1.2;
+      letter-spacing: .02em;
+    }
 
     .proof-carousel-wrap {
       position: relative;
@@ -441,21 +411,29 @@
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
       padding: 0 20px 8px;
-      will-change: scroll-position;
-      contain: layout style;
     }
 
     .proof-carousel::-webkit-scrollbar { display: none; }
 
+    /* Dimensões fixas em cada card evitam CLS no scroll */
     .proof-card {
       flex: 0 0 280px;
-      height: auto;
+      /* Reserva a altura antes da imagem carregar */
+      height: 350px;
       border-radius: 14px;
       background: var(--creme-verde);
       scroll-snap-align: start;
       overflow: hidden;
-      contain: layout style paint;
       border: 2px solid var(--verde-escuro);
+      contain: strict;
+    }
+
+    .proof-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #fff;
     }
 
     .proof-arrow {
@@ -466,15 +444,14 @@
       color: #fff;
       border: none;
       border-radius: 50%;
-      width: 38px;
-      height: 38px;
+      width: 38px; height: 38px;
       font-size: 1.1rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0.85;
-      transition: opacity 0.2s;
+      opacity: .85;
+      transition: opacity .2s;
       z-index: 2;
     }
 
@@ -482,39 +459,28 @@
     .proof-arrow-prev { left: 6px; }
     .proof-arrow-next { right: 6px; }
 
-    .proof-dots {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 12px;
-    }
+    .proof-dots { display: flex; justify-content: center; gap: 6px; margin-top: 12px; }
 
     .proof-dot {
-      width: 8px;
-      height: 8px;
+      width: 8px; height: 8px;
       border-radius: 50%;
       background: var(--sage-claro);
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background .2s;
     }
 
     .proof-dot.active { background: var(--verde-escuro); }
 
-    /* ===== PLANOS ===== */
-    .plans-wrap {
-      max-width: 700px;
-      margin: 28px auto 0;
-      padding: 0 20px 16px;
-    }
+    /* === PLANOS === */
+    .plans-wrap { max-width: 700px; margin: 28px auto 0; padding: 0 20px 16px; }
 
     .plans-title {
       text-align: center;
-      font-family: var(--font-sans);
       font-size: 1.15rem;
       font-weight: 700;
       color: var(--verde-escuro);
       margin-bottom: 16px;
-      letter-spacing: 0.01em;
+      letter-spacing: .01em;
       text-transform: uppercase;
     }
 
@@ -539,20 +505,18 @@
     .plan-card-featured {
       border-color: var(--verde-escuro);
       background: var(--branco);
-      box-shadow: 0 4px 18px rgba(59,77,30,0.13);
+      box-shadow: 0 4px 18px rgba(59,77,30,.13);
     }
 
     .plan-popular-tag {
       position: absolute;
-      top: -13px;
-      left: 50%;
+      top: -13px; left: 50%;
       transform: translateX(-50%);
       background: var(--verde-escuro);
       color: var(--branco);
-      font-family: var(--font-sans);
-      font-size: 0.68rem;
+      font-size: .68rem;
       font-weight: 700;
-      letter-spacing: 0.09em;
+      letter-spacing: .09em;
       text-transform: uppercase;
       padding: 4px 12px;
       border-radius: 20px;
@@ -560,12 +524,11 @@
     }
 
     .plan-badge {
-      font-family: var(--font-sans);
-      font-size: 0.85rem;
+      font-size: .85rem;
       font-weight: 700;
       text-align: center;
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: .04em;
       padding: 6px 10px;
       border-radius: 8px;
     }
@@ -576,14 +539,12 @@
     .plan-price-wrap { text-align: center; line-height: 1; }
 
     .plan-price {
-      font-family: var(--font-sans);
       font-size: 2.2rem;
       font-weight: 900;
       color: var(--verde-escuro);
     }
 
     .plan-price-cents {
-      font-family: var(--font-sans);
       font-size: 1.1rem;
       font-weight: 700;
       color: var(--verde-escuro);
@@ -592,8 +553,6 @@
 
     .plan-features {
       list-style: none;
-      padding: 0;
-      margin: 0;
       display: flex;
       flex-direction: column;
       gap: 7px;
@@ -601,9 +560,7 @@
     }
 
     .plan-features li {
-      font-family: var(--font-sans);
-      font-size: 0.83rem;
-      color: var(--marrom-terra);
+      font-size: .83rem;
       padding-left: 18px;
       position: relative;
       line-height: 1.4;
@@ -625,60 +582,48 @@
       text-decoration: none;
       border-radius: 10px;
       padding: 13px 10px;
-      font-family: var(--font-sans);
       font-weight: 700;
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
+      font-size: .78rem;
+      letter-spacing: .05em;
       text-transform: uppercase;
-      transition: background-color 0.2s ease, transform 0.15s ease;
+      transition: background-color .2s, transform .15s;
       margin-top: 4px;
+      will-change: transform;
     }
 
     .btn-plan:hover { transform: translateY(-2px); }
     .btn-plan-basic { background: var(--verde-medio); color: var(--branco); }
     .btn-plan-basic:hover { background: var(--verde-escuro); }
     .btn-plan-featured { background: var(--verde-escuro); color: var(--branco); }
-    .btn-plan-featured:hover { background: var(--marrom-terra); }
+    .btn-plan-featured:hover { background: var(--preto); }
 
-    /* ===== MOBILE ===== */
+    /* === MOBILE === */
     @media (max-width: 480px) {
       .hero { padding: 20px 16px 0; }
-
       .hero-name { font-size: 1.7rem; margin-bottom: 14px; }
       .hero-promise { font-size: 1.55rem; }
-      .hero-stars { font-size: 1.2rem; }
-
-      .hero-subtitle { font-size: 0.97rem; }
-      .hero-objections li { font-size: 0.95rem; }
-      .hero-price-value { font-size: 1.7rem; }
-
+      .hero-subtitle { font-size: .97rem; }
+      .hero-objections li { font-size: .95rem; }
       .btn-cta { font-size: 1.1rem; padding: 16px 20px; width: 100%; max-width: 100%; }
       .btn-cta-wrap { padding: 8px 0 24px; }
-
-      .section-heading-box,
-      .faq-heading-box { margin-left: 12px; margin-right: 12px; padding: 10px 12px; }
+      .section-heading-box, .faq-heading-box { margin-left: 12px; margin-right: 12px; padding: 10px 12px; }
       .section-heading-box h2, .faq-heading-box h2 { font-size: 1.2rem; }
-
       .included-card { margin: 0 12px 16px; padding: 18px 16px; }
-      .included-text { font-size: 0.92rem; }
+      .included-text { font-size: .92rem; }
       .check-icon { width: 22px; height: 22px; min-width: 22px; }
-
       .closing-box { margin-left: 12px; margin-right: 12px; padding: 14px 16px; }
-      .closing-box p { font-size: 0.95rem; }
-
+      .closing-box p { font-size: .95rem; }
       .faq-card { margin-left: 12px; margin-right: 12px; }
-      .faq-question { font-size: 0.92rem; padding: 14px 16px; gap: 10px; }
-      .faq-answer { padding: 0 16px 14px 38px; font-size: 0.9rem; }
-
-      .proof-card { flex: 0 0 88vw; }
+      .faq-question { font-size: .92rem; padding: 14px 16px; gap: 10px; }
+      .faq-answer { padding-left: 38px; font-size: .9rem; }
+      .proof-card { flex: 0 0 88vw; height: auto; min-height: 300px; }
       .proof-arrow { display: none; }
-      .proof-section > div { padding: 24px 16px 12px; }
-
-      .plans-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .proof-section-head { padding: 24px 16px 12px; }
+      .plans-grid { gap: 10px; }
       .plan-card { padding: 18px 12px 16px; }
       .plan-price { font-size: 1.8rem; }
-      .plan-features li { font-size: 0.78rem; }
-      .btn-plan { font-size: 0.72rem; padding: 11px 6px; }
+      .plan-features li { font-size: .78rem; }
+      .btn-plan { font-size: .72rem; padding: 11px 6px; }
     }
 
     @media (max-width: 360px) {
@@ -690,7 +635,6 @@
     @media (max-width: 340px) {
       .plans-grid { grid-template-columns: 1fr; }
     }
-
   </style>
 </head>
 
@@ -700,23 +644,20 @@
   <!-- ===== HERO ===== -->
   <section class="hero">
 
-    <!-- Assinatura -->
     <img
+      class="hero-sig"
       src="https://canilmeucaoeducado.github.io/meucaoeducado/assinatura%20diego%20lima.webp"
       alt="Assinatura Diego Lima"
       fetchpriority="high"
-      decoding="async"
+      decoding="sync"
       width="220"
       height="86"
-      style="max-width:220px; width:60%; height:auto; display:inline-block; margin-bottom:16px;"
     />
 
-    <!-- Promessa -->
     <h1 class="hero-promise">
-      <span style="color:var(--verde-medio);">Chega de Ser Arrastada no Passeio e Tenha o Cão Educado que Você Sempre Sonhou</span><span style="color:var(--marrom-terra);">, em Menos de 10 Minutos por Dia.</span>
+      <span style="color:var(--verde-medio);">Chega de Ser Arrastada no Passeio e Tenha o Cão Educado que Você Sempre Sonhou</span><span style="color:var(--preto);">, em Menos de 10 Minutos por Dia.</span>
     </h1>
 
-    <!-- Mockup -->
     <div class="hero-image-wrap">
       <picture>
         <source
@@ -725,30 +666,26 @@
             https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp 560w,
             https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp 1120w
           "
-          sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+          sizes="(max-width:600px) calc(100vw - 40px), 560px"
         />
         <img
           src="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp"
-          alt="Mockup do Programa Online Meu Cão Educado — Diego Lima Veterinário & Adestrador"
+          alt="Mockup do Programa Online Meu Cão Educado — Diego Lima Veterinário e Adestrador"
           fetchpriority="high"
-          decoding="async"
+          decoding="sync"
           width="560"
           height="350"
-          style="width:100%; height:auto; border-radius:16px; display:block;"
-          onerror="this.closest('picture').style.display='none'; this.closest('.hero-image-wrap').querySelector('.hero-image-placeholder').style.display='flex';"
+          style="width:100%;height:auto;border-radius:16px;display:block;"
+          onerror="this.closest('picture').style.display='none';this.closest('.hero-image-wrap').querySelector('.hero-image-placeholder').style.display='flex';"
         />
       </picture>
-      <div class="hero-image-placeholder" style="display:none;">
-        [SUBSTITUA PELA IMAGEM DO PRODUTO]
-      </div>
+      <div class="hero-image-placeholder" style="display:none;">[SUBSTITUA PELA IMAGEM DO PRODUTO]</div>
     </div>
 
-    <!-- Subtítulo principal -->
     <p class="hero-subtitle">
       Meu programa completo com treinos e brincadeiras para cães hiperativos e cheios de energia, que puxam no passeio, pulam nas pessoas e latem pra tudo na rua.
     </p>
 
-    <!-- Quebras de objeção -->
     <ul class="hero-objections">
       <li>Para qualquer raça, tamanho ou idade.</li>
       <li>Só precisa de guia, petiscos e objetos que tem em casa.</li>
@@ -756,11 +693,10 @@
       <li>Sem brigar, punir nem repetir comandos 10 vezes.</li>
     </ul>
 
-    <!-- CTA -->
-    <a href="#checkout" class="btn-cta" onclick="event.preventDefault(); document.getElementById('checkout').scrollIntoView({behavior:'smooth'});">
+    <a href="https://chk.eduzz.com/dwt7yr3b" class="btn-cta" target="_blank" rel="noopener">
       Quero Essa Transformação por R$ 97
     </a>
-    <p class="plans-guarantee" style="margin-top:10px; margin-bottom:32px;">📲 Acesso por 2 anos &nbsp; 🔒 Garantia de 7 dias</p>
+    <p class="plans-guarantee" style="margin-top:10px;margin-bottom:32px;">📲 Acesso por 2 anos &nbsp; 🔒 Garantia de 7 dias</p>
 
   </section>
 
@@ -772,155 +708,133 @@
   <div class="included-card">
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Um programa completo</strong>, para você gastar energia física e mental, e ao mesmo tempo, educar seu cão com atividades.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Um programa completo</strong>, para você gastar energia física e mental, e ao mesmo tempo, educar seu cão com atividades.</div>
     </div>
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Orientações iniciais</strong> — Como motivar o cão, conduzir as atividades e evitar erros comuns.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Orientações iniciais</strong> — Como motivar o cão, conduzir as atividades e evitar erros comuns.</div>
     </div>
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Controle de Impulsos</strong> — Para cães que puxam no passeio, latem pra tudo, perseguem coisas, roubam comida, fogem ou pulam nas pessoas.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Controle de Impulsos</strong> — Para cães que puxam no passeio, latem pra tudo, perseguem coisas, roubam comida, fogem ou pulam nas pessoas.</div>
     </div>
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Obediência</strong> — Ótimo se você quer um cão bem comportado que venha até você quando chamado.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Obediência</strong> — Ótimo se você quer um cão bem comportado que venha até você quando chamado.</div>
     </div>
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Truques (fáceis e avançados)</strong> — Excelentes para estimulação mental.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Truques (fáceis e avançados)</strong> — Excelentes para estimulação mental.</div>
     </div>
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Resolução de Problemas</strong> — Excelente para cães muito espertos e que aprontam quando estão entediados.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Resolução de Problemas</strong> — Excelente para cães muito espertos e que aprontam quando estão entediados.</div>
     </div>
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Faro</strong> — Para cães que amam cheirar tudo e puxam muito no passeio. Esse cansa de verdade.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Faro</strong> — Para cães que amam cheirar tudo e puxam muito no passeio. Esse cansa de verdade.</div>
     </div>
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Alta Energia</strong> — Ótimo para cansar fisicamente sem precisar aumentar os passeios.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Alta Energia</strong> — Ótimo para cansar fisicamente sem precisar aumentar os passeios.</div>
     </div>
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Consciência Corporal</strong> — Para melhorar coordenação, confiança e controle do corpo. Ótimo para cães muito agitados, inseguros ou estabanados.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Consciência Corporal</strong> — Para melhorar coordenação, confiança e controle do corpo. Ótimo para cães muito agitados, inseguros ou estabanados.</div>
     </div>
 
     <div class="included-item">
-      <div class="check-icon">
-        <svg viewBox="0 0 14 14"><polyline points="2,7 5.5,11 12,3"/></svg>
-      </div>
-      <div class="included-text">
-        <strong>Pastoreio</strong> — Especial para cães com instintos mais intensos, que naturalmente mordem, perseguem e latem para tudo que se move.
-      </div>
+      <div class="check-icon"><svg viewBox="0 0 14 14" aria-hidden="true"><polyline points="2,7 5.5,11 12,3"/></svg></div>
+      <div class="included-text"><strong>Pastoreio</strong> — Especial para cães com instintos mais intensos, que naturalmente mordem, perseguem e latem para tudo que se move.</div>
     </div>
 
   </div>
 
   <!-- ===== PROVA SOCIAL ===== -->
   <section class="proof-section">
-    <div style="text-align:center; padding: 32px 20px 16px;">
-      <div style="max-width:700px; margin:0 auto;">
-        <h2 style="font-family:'DM Sans',sans-serif; font-size:clamp(1.1rem,5vw,1.5rem); font-weight:800; color:var(--verde-escuro); line-height:1.2; letter-spacing:0.02em;">
-          VEJA O QUE ACONTECE EM POUCAS SEMANAS
-        </h2>
-      </div>
+    <div class="proof-section-head">
+      <h2>VEJA O QUE ACONTECE EM POUCAS SEMANAS</h2>
     </div>
 
     <div class="proof-carousel-wrap">
       <div class="proof-carousel" id="proofCarousel">
 
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoime_mari_tully.webp" alt="Depoimento Mari e Tully" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoime_mari_tully.webp"
+               alt="Depoimento Mari e Tully" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp" alt="Depoimento Jeane e Jade" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp"
+               alt="Depoimento Jeane e Jade" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela_fly.webp" alt="Depoimento Rosangela e Fly" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela_fly.webp"
+               alt="Depoimento Rosangela e Fly" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp" alt="Depoimento Pedro e Rock" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp"
+               alt="Depoimento Pedro e Rock" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp" alt="Depoimento card7" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card7.webp"
+               alt="Depoimento card7" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp" alt="Depoimento Beto e Max" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp"
+               alt="Depoimento Beto e Max" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp" alt="Depoimento Kiara e Maia" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card5.webp"
+               alt="Depoimento Kiara e Maia" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp" alt="Depoimento Nero" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card6.webp"
+               alt="Depoimento Nero" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp" alt="Depoimento Ros e Duque" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp"
+               alt="Depoimento Ros e Duque" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp" alt="Depoimento card8" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card8.webp"
+               alt="Depoimento card8" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
-        <div class="proof-card" style="padding:0; overflow:hidden;">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_Fred_Yorkshire.webp" alt="Depoimento Fred Yorkshire" width="280" height="350" loading="lazy" decoding="async" style="width:100%; height:auto; aspect-ratio:4/5; object-fit:contain; display:block; background:#fff;">
+        <div class="proof-card">
+          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_Fred_Yorkshire.webp"
+               alt="Depoimento Fred Yorkshire" width="280" height="350"
+               loading="lazy" decoding="async">
         </div>
 
       </div>
 
-      <button class="proof-arrow proof-arrow-prev" onclick="scrollProof(-1)" aria-label="Anterior">&#8592;</button>
-      <button class="proof-arrow proof-arrow-next" onclick="scrollProof(1)" aria-label="Próximo">&#8594;</button>
+      <button class="proof-arrow proof-arrow-prev" id="proofPrev" aria-label="Anterior">&#8592;</button>
+      <button class="proof-arrow proof-arrow-next" id="proofNext" aria-label="Próximo">&#8594;</button>
       <div class="proof-dots" id="proofDots"></div>
     </div>
   </section>
 
   <!-- ===== CTA PREÇO 2 ===== -->
-  <div style="text-align:center; padding: 24px 20px 8px;">
-    <a href="#checkout" class="btn-cta" style="max-width:420px; display:inline-block;" onclick="event.preventDefault(); document.getElementById('checkout').scrollIntoView({behavior:'smooth'});">
+  <div style="text-align:center;padding:24px 20px 8px;">
+    <a href="https://chk.eduzz.com/dwt7yr3b" class="btn-cta" style="max-width:420px;display:inline-block;" target="_blank" rel="noopener">
       Quero Essa Transformação por R$ 97
     </a>
     <p class="plans-guarantee" style="margin-top:16px;">📲 Acesso por 2 anos &nbsp; 🔒 Garantia de 7 dias</p>
@@ -935,8 +849,8 @@
     <div class="faq-card">
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           Funciona para qualquer raça e idade?
         </button>
         <div class="faq-answer">
@@ -945,8 +859,8 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           Preciso ter experiência?
         </button>
         <div class="faq-answer">
@@ -955,8 +869,8 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           Preciso de algum equipamento especial?
         </button>
         <div class="faq-answer">
@@ -965,8 +879,8 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           Funciona para cão teimoso?
         </button>
         <div class="faq-answer">
@@ -975,8 +889,8 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           Preciso de horas de treino por dia?
         </button>
         <div class="faq-answer">
@@ -985,8 +899,8 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           Vai ser difícil de aplicar?
         </button>
         <div class="faq-answer">
@@ -995,18 +909,18 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           E se eu tiver dúvidas?
         </button>
         <div class="faq-answer">
-          Você pode perguntar diretamente para Diego Lima Veterinário & Adestrador nos comentários de cada aula.
+          Você pode perguntar diretamente para Diego Lima Veterinário e Adestrador nos comentários de cada aula.
         </div>
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           Como acessar o conteúdo?
         </button>
         <div class="faq-answer">
@@ -1015,8 +929,8 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           Como o conteúdo está organizado?
         </button>
         <div class="faq-answer">
@@ -1025,8 +939,8 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-question" onclick="toggleFaq(this)">
-          <span class="faq-plus">+</span>
+        <button class="faq-question" aria-expanded="false">
+          <span class="faq-plus" aria-hidden="true">+</span>
           E se eu não gostar? Tem garantia?
         </button>
         <div class="faq-answer">
@@ -1037,111 +951,98 @@
     </div>
   </div>
 
-  <!-- ===== CHECKOUT EDUZZ ===== -->
-  <div id="checkout" style="max-width:700px; margin:32px auto 0; padding:0 20px;">
-    <div id="elements"></div>
-    <script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" defer type="module"></script>
-    <script>
-      (function () {
-        const load = function () {
-          window.Eduzz.Checkout.init({
-            contentId: "1W3ZEGD5W2",
-            target: "elements",
-            errorCover: true
-          });
-        }
-        if (document.readyState === 'complete') { load(); return; }
-        window.addEventListener('load', load);
-      })();
-    </script>
-  </div>
-
   <!-- ===== FOOTER ===== -->
-  </main>
-  <footer>
-    <p>© 2024 Diego Lima Veterinário & Adestrador. Todos os direitos reservados.</p>
-  </footer>
+</main>
+<footer>
+  <p>© 2024 Diego Lima Veterinário e Adestrador. Todos os direitos reservados.</p>
+</footer>
 
-  <script>
-    function toggleFaq(btn) {
-      const item = btn.parentElement;
-      item.classList.toggle('open');
-    }
+<!--
+  ============================================================
+  SCRIPTS — todos no final do body, sem render-blocking
+  ============================================================
+-->
+<script>
+/* ---- FAQ — delegação de evento (1 listener em vez de 10) ---- */
 
-    function initCarousel() {
-      const carousel = document.getElementById('proofCarousel');
-      const dotsWrap = document.getElementById('proofDots');
-      if (!carousel || !dotsWrap) return;
-      const cards = carousel.querySelectorAll('.proof-card');
-      if (!cards.length) return;
-      const frag = document.createDocumentFragment();
-      cards.forEach((_, i) => {
-        const dot = document.createElement('div');
-        dot.className = 'proof-dot' + (i === 0 ? ' active' : '');
-        dot.onclick = () => {
-          const targetLeft = cards[i].offsetLeft - 20;
-          carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
-        };
-        frag.appendChild(dot);
+/* ---- Carrossel ---- */
+(function() {
+  var carousel = document.getElementById('proofCarousel');
+  var dotsWrap = document.getElementById('proofDots');
+  if (!carousel || !dotsWrap) return;
+
+  var cards = carousel.querySelectorAll('.proof-card');
+  if (!cards.length) return;
+
+  /* Dots */
+  var frag = document.createDocumentFragment();
+  cards.forEach(function(_, i) {
+    var dot = document.createElement('div');
+    dot.className = 'proof-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', function() {
+      carousel.scrollTo({ left: cards[i].offsetLeft - 20, behavior: 'smooth' });
+    });
+    frag.appendChild(dot);
+  });
+  dotsWrap.appendChild(frag);
+
+  /* Atualiza dot ativo — throttled com rAF */
+  var ticking = false;
+  carousel.addEventListener('scroll', function() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function() {
+      var left = carousel.getBoundingClientRect().left;
+      var closest = 0, minDist = Infinity;
+      cards.forEach(function(c, i) {
+        var d = Math.abs(c.getBoundingClientRect().left - left);
+        if (d < minDist) { minDist = d; closest = i; }
       });
-      dotsWrap.appendChild(frag);
-      let scrollTicking = false;
-      carousel.addEventListener('scroll', () => {
-        if (scrollTicking) return;
-        scrollTicking = true;
-        requestAnimationFrame(() => {
-          const carouselLeft = carousel.getBoundingClientRect().left;
-          const positions = Array.from(cards).map(card => ({
-            dist: Math.abs(card.getBoundingClientRect().left - carouselLeft)
-          }));
-          let closest = 0, minDist = Infinity;
-          positions.forEach((p, i) => { if (p.dist < minDist) { minDist = p.dist; closest = i; } });
-          dotsWrap.querySelectorAll('.proof-dot').forEach((d, i) => {
-            d.classList.toggle('active', i === closest);
-          });
-          scrollTicking = false;
-        });
-      }, { passive: true });
-    }
+      dotsWrap.querySelectorAll('.proof-dot').forEach(function(d, i) {
+        d.classList.toggle('active', i === closest);
+      });
+      ticking = false;
+    });
+  }, { passive: true });
 
-    function scrollProof(dir) {
-      const carousel = document.getElementById('proofCarousel');
-      if (!carousel) return;
-      const cardW = (carousel.querySelector('.proof-card')?.offsetWidth || 280) + 14;
-      carousel.scrollBy({ left: dir * cardW, behavior: 'smooth' });
-    }
+  /* Botões de seta */
+  document.getElementById('proofPrev').addEventListener('click', function() {
+    var w = (carousel.querySelector('.proof-card').offsetWidth || 280) + 14;
+    carousel.scrollBy({ left: -w, behavior: 'smooth' });
+  });
+  document.getElementById('proofNext').addEventListener('click', function() {
+    var w = (carousel.querySelector('.proof-card').offsetWidth || 280) + 14;
+    carousel.scrollBy({ left: w, behavior: 'smooth' });
+  });
+})();
 
-    if (document.readyState === 'complete') {
-      initCarousel();
-    } else {
-      window.addEventListener('load', initCarousel, { once: true });
-    }
-  </script>
+/* ---- Meta Pixel + Clarity carregados abaixo ---- */
+</script>
 
-  <!-- Meta Pixel + Microsoft Clarity -->
-  <script>
-  window.addEventListener('load', function () {
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+<!-- Meta Pixel + Microsoft Clarity — diferidos para depois do load -->
+<script>
+window.addEventListener('load', function() {
+  /* Meta Pixel */
+  !function(f,b,e,v,n,t,s){
+    if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
     if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
     n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1336628157581322');
-    fbq('track', 'PageView');
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
+  }(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1336628157581322');
+  fbq('track','PageView');
 
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "w3fnz1hr1l");
-  }, { once: true });
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
+  /* Microsoft Clarity */
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window,document,'clarity','script','w3fnz1hr1l');
+}, { once: true });
+</script>
+<noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1336628157581322&ev=PageView&noscript=1"
-  /></noscript>
+/></noscript>
 
 </body>
 </html>
