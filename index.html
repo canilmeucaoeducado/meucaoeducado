@@ -597,6 +597,164 @@
     .btn-plan-featured { background: var(--verde-escuro); color: var(--branco); }
     .btn-plan-featured:hover { background: var(--preto); }
 
+    /* === USE ESTAS BRINCADEIRAS PARA === */
+    .benefits-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 36px 20px 8px;
+      text-align: center;
+    }
+
+    .benefits-title {
+      font-size: clamp(1.3rem, 5vw, 1.6rem);
+      font-weight: 900;
+      color: var(--verde-escuro);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .benefits-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .benefits-list li {
+      font-size: 1rem;
+      line-height: 1.55;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      text-align: left;
+      max-width: 520px;
+      width: 100%;
+    }
+
+    .benefits-list li::before {
+      content: "✔";
+      color: var(--verde-medio);
+      font-weight: 700;
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* === QUEM É DIEGO LIMA === */
+    .about-section {
+      padding: 8px 20px 32px;
+    }
+
+    .about-card {
+      max-width: 700px;
+      margin: 0 auto;
+      background: var(--creme-verde);
+      border: 2px solid var(--verde-escuro);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-inner {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    /* Coluna esquerda — foto */
+    .about-photo-col {
+      flex: 0 0 42%;
+      position: relative;
+      min-height: 380px;
+    }
+
+    .about-photo-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    /* Coluna direita — texto */
+    .about-text-col {
+      flex: 1;
+      padding: 28px 24px 28px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .about-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--verde-escuro);
+      border: 1.5px solid var(--verde-escuro);
+      border-radius: 20px;
+      padding: 4px 12px;
+      margin-bottom: 10px;
+      width: fit-content;
+    }
+
+    .about-name {
+      font-size: clamp(1.9rem, 6vw, 2.6rem);
+      font-weight: 900;
+      line-height: 1.0;
+      margin-bottom: 20px;
+    }
+
+    .about-name span { color: var(--verde-medio); display: block; }
+
+    .about-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .about-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .about-icon {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      background: var(--branco);
+      border: 1.5px solid var(--verde-escuro);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .95rem;
+      margin-top: 1px;
+    }
+
+    .about-item-text {
+      font-size: .88rem;
+      line-height: 1.5;
+      color: var(--preto);
+    }
+
+    .about-item-text strong { color: var(--verde-escuro); }
+
+    /* Mobile: empilha foto em cima, texto embaixo */
+    @media (max-width: 520px) {
+      .about-inner { flex-direction: column; }
+      .about-photo-col { flex: none; min-height: 260px; max-height: 300px; }
+      .about-text-col { padding: 20px 18px 24px; }
+      .about-name { font-size: 1.8rem; }
+    }
+
     /* === MOBILE === */
     @media (max-width: 480px) {
       .hero { padding: 20px 16px 0; }
@@ -759,6 +917,13 @@
 
   </div>
 
+  <div class="btn-cta-wrap">
+    <a href="https://chk.eduzz.com/dwt7yr3b" class="btn-cta" target="_blank" rel="noopener">
+      Quero Essa Transformação por R$ 97
+    </a>
+    <p class="plans-guarantee">📲 Acesso por 2 anos &nbsp; 🔒 Garantia de 7 dias</p>
+  </div>
+
   <!-- ===== PROVA SOCIAL ===== -->
   <section class="proof-section">
     <div class="proof-section-head">
@@ -831,6 +996,19 @@
       <div class="proof-dots" id="proofDots"></div>
     </div>
   </section>
+
+  <!-- ===== USE ESTAS BRINCADEIRAS PARA ===== -->
+  <div class="benefits-wrap">
+    <h2 class="benefits-title">Use essas atividades para…</h2>
+    <ul class="benefits-list">
+      <li>Aumentar o foco do seu cão, mesmo em ambientes cheios de distrações.</li>
+      <li>Gastar energia em dias de chuva ou correria.</li>
+      <li>Reduzir comportamentos reativos.</li>
+      <li>Fortalecer a confiança de cães ansiosos ou inseguros.</li>
+      <li>Ajudar seu cão a se acalmar e relaxar, usando o cérebro e o corpo do jeito certo.</li>
+      <li>Fortalecer o vínculo entre vocês.</li>
+    </ul>
+  </div>
 
   <!-- ===== CTA PREÇO 2 ===== -->
   <div style="text-align:center;padding:24px 20px 8px;">
@@ -950,6 +1128,58 @@
 
     </div>
   </div>
+
+  <div class="btn-cta-wrap">
+    <a href="https://chk.eduzz.com/dwt7yr3b" class="btn-cta" target="_blank" rel="noopener">
+      Quero Essa Transformação por R$ 97
+    </a>
+    <p class="plans-guarantee">📲 Acesso por 2 anos &nbsp; 🔒 Garantia de 7 dias</p>
+  </div>
+
+  <!-- ===== QUEM É DIEGO LIMA ===== -->
+  <section class="about-section">
+    <div class="about-card">
+      <div class="about-inner">
+
+        <!-- Foto -->
+        <div class="about-photo-col">
+          <img
+            src="https://canilmeucaoeducado.github.io/meucaoeducado/diego_quem_sou_eu.webp"
+            alt="Diego Lima — Veterinário e Adestrador"
+            width="300"
+            height="380"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <!-- Texto -->
+        <div class="about-text-col">
+          <span class="about-eyebrow">👤 Quem é</span>
+          <h2 class="about-name">Diego<span>Lima</span></h2>
+          <ul class="about-items">
+            <li class="about-item">
+              <div class="about-icon">🗓️</div>
+              <div class="about-item-text"><strong>Veterinário</strong> desde 2006.</div>
+            </li>
+            <li class="about-item">
+              <div class="about-icon">🐾</div>
+              <div class="about-item-text"><strong>Adestrador</strong> desde 2008.</div>
+            </li>
+            <li class="about-item">
+              <div class="about-icon">🐕</div>
+              <div class="about-item-text">Já tive <strong>mais de 10 cães.</strong></div>
+            </li>
+            <li class="about-item">
+              <div class="about-icon">📈</div>
+              <div class="about-item-text">Já transformei o comportamento de <strong>centenas de cães</strong> de diferentes raças, tamanhos e idades.</div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- ===== FOOTER ===== -->
 </main>
