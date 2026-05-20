@@ -7,26 +7,27 @@
   <meta name="description" content="+60 Atividades Para Gastar Energia e Educar Seu Cão Hiperativo" />
   <meta property="og:title" content="Programa Meu Cão Educado - Diego Lima" />
   <meta property="og:description" content="+60 Atividades Para Gastar Energia e Educar Seu Cão Hiperativo" />
-  <meta property="og:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png" />
+  <meta property="og:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp" />
   <meta property="og:image:width" content="560" />
   <meta property="og:image:height" content="350" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Programa Meu Cão Educado - Diego Lima" />
   <meta name="twitter:description" content="+60 Atividades Para Gastar Energia e Educar Seu Cão Hiperativo" />
-  <meta name="twitter:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png" />
+  <meta name="twitter:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp" />
 
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://canilmeucaoeducado.github.io" crossorigin />
+  <link rel="preconnect" href="https://cdn.eduzzcdn.com" crossorigin />
+  <link rel="preconnect" href="https://elements2.eduzz.com" crossorigin />
 
-  <link rel="preload" as="image" href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png" />
+  <link rel="preload" as="image" fetchpriority="high" href="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp" type="image/webp" />
 
   <!-- DM Sans + Dancing Script (cursiva para o nome) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap&font-display=swap" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" media="print" onload="this.media='all'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Dancing+Script:wght@700&display=swap" /></noscript>
 
   <style>
@@ -37,6 +38,7 @@
       descent-override: 25%;
       line-gap-override: 0%;
       size-adjust: 103%;
+      font-display: swap;
     }
 
     :root {
@@ -116,6 +118,8 @@
     .hero-image-wrap {
       margin: 0 auto 20px;
       max-width: 560px;
+      aspect-ratio: 560/350;
+      contain: layout;
     }
 
     .hero-image-wrap img {
@@ -197,8 +201,8 @@
     /* ===== BOTÃO CTA ===== */
     .btn-cta {
       display: inline-block;
-      background-color: var(--verde-medio);
-      color: var(--branco);
+      background-color: #076B2E;
+      color: #FFFFFF;
       text-decoration: none;
       border-radius: 10px;
       padding: 16px 32px;
@@ -216,7 +220,7 @@
     }
 
     .btn-cta:hover {
-      background-color: var(--verde-escuro);
+      background-color: #054F22;
       transform: translateY(-2px);
     }
 
@@ -239,7 +243,7 @@
       text-align: center;
       font-family: var(--font-sans);
       font-size: 0.82rem;
-      color: var(--verde-cinza);
+      color: #1A5C32;
       margin-top: 10px;
     }
 
@@ -307,7 +311,7 @@
       stroke-linejoin: round;
     }
 
-    .included-text strong { color: var(--verde-escuro); font-weight: 600; }
+    .included-text strong { color: #065A28; font-weight: 700; }
 
     .included-text {
       font-size: 0.97rem;
@@ -384,11 +388,11 @@
       font-family: var(--font-sans);
       font-size: 0.97rem;
       font-weight: 700;
-      color: var(--verde-escuro);
+      color: #065A28;
       transition: color 0.15s;
     }
 
-    .faq-question:hover { color: var(--verde-medio); }
+    .faq-question:hover { color: #0E8A3E; }
 
     .faq-plus {
       font-size: 1.1rem;
@@ -412,11 +416,11 @@
 
     /* ===== FOOTER ===== */
     footer {
-      background-color: var(--verde-escuro);
+      background-color: #065A28;
       text-align: center;
       padding: 24px 20px;
       font-size: 0.85rem;
-      color: var(--creme-verde);
+      color: #FFFFFF;
       margin-top: 8px;
     }
 
@@ -702,6 +706,8 @@
       alt="Assinatura Diego Lima"
       fetchpriority="high"
       decoding="async"
+      width="220"
+      height="86"
       style="max-width:220px; width:60%; height:auto; display:inline-block; margin-bottom:16px;"
     />
 
@@ -712,16 +718,26 @@
 
     <!-- Mockup -->
     <div class="hero-image-wrap">
-      <img
-        src="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.png"
-        alt="Mockup do Programa Online Meu Cão Educado — Diego Lima Veterinário & Adestrador"
-        fetchpriority="high"
-        decoding="async"
-        width="560"
-        height="350"
-        style="aspect-ratio:560/350; width:100%; height:auto;"
-        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-      />
+      <picture>
+        <source
+          type="image/webp"
+          srcset="
+            https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp 560w,
+            https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp 1120w
+          "
+          sizes="(max-width: 600px) calc(100vw - 40px), 560px"
+        />
+        <img
+          src="https://canilmeucaoeducado.github.io/meucaoeducado/mockup_meucaoeducado.webp"
+          alt="Mockup do Programa Online Meu Cão Educado — Diego Lima Veterinário & Adestrador"
+          fetchpriority="high"
+          decoding="async"
+          width="560"
+          height="350"
+          style="width:100%; height:auto; border-radius:16px; display:block;"
+          onerror="this.closest('picture').style.display='none'; this.closest('.hero-image-wrap').querySelector('.hero-image-placeholder').style.display='flex';"
+        />
+      </picture>
       <div class="hero-image-placeholder" style="display:none;">
         [SUBSTITUA PELA IMAGEM DO PRODUTO]
       </div>
@@ -1024,7 +1040,7 @@
   <!-- ===== CHECKOUT EDUZZ ===== -->
   <div id="checkout" style="max-width:700px; margin:32px auto 0; padding:0 20px;">
     <div id="elements"></div>
-    <script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" async type="module"></script>
+    <script src="https://cdn.eduzzcdn.com/sun/bridge/bridge.js" defer type="module"></script>
     <script>
       (function () {
         const load = function () {
