@@ -1198,6 +1198,22 @@
 -->
 <script>
 /* ---- FAQ — delegação de evento (1 listener em vez de 10) ---- */
+document.addEventListener('click', function(e) {
+  var btn = e.target.closest('.faq-question');
+  if (!btn) return;
+  var item = btn.closest('.faq-item');
+  var isOpen = item.classList.contains('open');
+  // fecha todos
+  document.querySelectorAll('.faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+  });
+  // abre o clicado (se estava fechado)
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+});
 
 /* ---- Carrossel ---- */
 (function() {
