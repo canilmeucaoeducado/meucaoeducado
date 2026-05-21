@@ -416,22 +416,19 @@
 
     .proof-carousel::-webkit-scrollbar { display: none; }
 
-    /* Dimensões fixas em cada card evitam CLS no scroll */
     .proof-card {
       flex: 0 0 280px;
-      /* Reserva a altura antes da imagem carregar */
-      height: 350px;
       border-radius: 14px;
       background: var(--creme-verde);
       scroll-snap-align: start;
       overflow: hidden;
       border: 2px solid var(--verde-escuro);
-      contain: strict;
+      contain: layout style;
     }
 
     .proof-card img {
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: contain;
       display: block;
       background: #fff;
@@ -775,7 +772,7 @@
       .faq-card { margin-left: 12px; margin-right: 12px; }
       .faq-question { font-size: .92rem; padding: 14px 16px; gap: 10px; }
       .faq-answer { padding-left: 38px; font-size: .9rem; }
-      .proof-card { flex: 0 0 88vw; height: auto; min-height: 300px; }
+      .proof-card { flex: 0 0 88vw; }
       .proof-arrow { display: none; }
       .proof-section-head { padding: 24px 16px 12px; }
       .plans-grid { gap: 10px; }
