@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Meu Cão Educado — Exercícios para cães agitados e reativos</title>
-  <meta name="description" content="Ajude seu cão a desacelerar, relaxar e prestar mais atenção em você com exercícios simples de 5 a 10 minutos." />
+  <title>Programa Meu Cão Educado | Atividades para cães agitados e reativos</title>
+  <meta name="description" content="Aprenda atividades práticas para estimular o cérebro do seu cão, reduzir o estresse e desenvolver mais calma, foco e conexão em poucos minutos por dia." />
   <meta property="og:title" content="Programa Meu Cão Educado - Diego Lima" />
-  <meta property="og:description" content="Um programa com mais de 60 exercícios práticas para gastar energia, aumentar a atenção em você e melhorar o comportamento do seu cão dentro e fora de casa." />
+  <meta property="og:description" content="Um programa com mais de 60 atividades práticas para estimular o cérebro, reduzir o estresse, aumentar a atenção em você e melhorar o comportamento do seu cão dentro e fora de casa." />
   <meta property="og:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/preview.webp" />
   <meta property="og:image:width" content="560" />
   <meta property="og:image:height" content="350" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Programa Meu Cão Educado - Diego Lima" />
-  <meta name="twitter:description" content="Um programa com mais de 60 exercícios práticas para gastar energia, aumentar a atenção em você e melhorar o comportamento do seu cão dentro e fora de casa." />
+  <meta name="twitter:description" content="Um programa com mais de 60 atividades práticas para estimular o cérebro, reduzir o estresse, aumentar a atenção em você e melhorar o comportamento do seu cão dentro e fora de casa." />
   <meta name="twitter:image" content="https://canilmeucaoeducado.github.io/meucaoeducado/preview.webp" />
 
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
@@ -279,13 +279,7 @@
       margin-bottom: 6px;
     }
 
-    .method-block-dot {
-      width: 10px;
-      height: 10px;
-      min-width: 10px;
-      border-radius: 50%;
-      background: var(--verde-medio);
-    }
+    .method-block-dot { display: none; }
 
     .method-block-title {
       font-size: 1.05rem;
@@ -312,11 +306,28 @@
     .method-tag {
       font-size: .78rem;
       font-weight: 600;
-      color: var(--verde-escuro);
-      background: var(--branco);
-      border-radius: 20px;
-      padding: 4px 12px;
-      line-height: 1.4;
+      color: #555;
+      background: transparent;
+      border-radius: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    .method-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 14px;
+      padding-left: 20px;
+    }
+
+    .method-tags::before {
+      content: '';
+    }
+
+    .method-tag::before {
+      content: '· ';
+      color: var(--verde-medio);
+      font-weight: 900;
     }
 
     @media (max-width: 480px) {
@@ -944,11 +955,19 @@
     <p style="text-align:center;font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--verde-escuro);margin-bottom:16px;">Para cães agitados, ansiosos e reativos</p>
 
     <h1 class="hero-promise">
-      <span style="color:var(--preto);">Seu cão não precisa de mais bronca no passeio.<br>Ele precisa aprender a ficar <span style="color:var(--verde-medio);">CALMO</span> perto de você.</span>
+      <span style="color:var(--preto);">Seu cão puxa no passeio, late pra tudo e não presta atenção em você?</span>
     </h1>
 
-    <p class="hero-subtitle" style="font-weight:400;color:#555;">
-      Chega de <strong style="color:var(--preto);">puxões, latidos e ansiedade</strong>. Seu cão aprende a prestar atenção em você e finalmente <strong style="color:var(--preto);">relaxar de verdade</strong>, com exercícios simples de <strong style="color:var(--preto);">5 a 10 minutos</strong>.
+    <p class="hero-subtitle" style="font-weight:400;color:#555;text-align:center;font-size:1rem;margin-bottom:4px;">
+      Ajude seu cão a desenvolver
+    </p>
+    <p style="text-align:center;font-size:clamp(1.1rem,5vw,1.35rem);font-weight:900;letter-spacing:.04em;margin-bottom:20px;line-height:1.3;">
+      <span style="color:var(--verde-escuro);">CALMA</span>
+      <span style="color:#999;font-weight:400;font-size:.85em;margin:0 6px;">•</span>
+      <span style="color:var(--verde-escuro);">FOCO</span>
+      <span style="color:#999;font-weight:400;font-size:.85em;margin:0 6px;">•</span>
+      <span style="color:var(--verde-escuro);">CONEXÃO</span>
+      <span style="display:block;font-size:clamp(.88rem,3.5vw,1rem);font-weight:500;color:#555;letter-spacing:.01em;margin-top:4px;">em poucos minutos por dia.</span>
     </p>
 
     <div class="hero-image-wrap">
@@ -979,21 +998,28 @@
       Criado por <strong style="color:var(--preto);">Diego Lima</strong> · Veterinário Especialista em Comportamento Canino
     </p>
 
-    <div style="background:#f4faf6;border-radius:14px;padding:16px 20px;margin:16px 0 24px;text-align:left;">
-      <p style="font-weight:700;font-size:.95rem;margin-bottom:10px;color:#333;">Você <u>NÃO</u> precisa…</p>
-      <ul class="hero-objections" style="margin:0;">
-        <li>Fazer treinos longos e cansativos</li>
-        <li>Ter experiência com adestramento</li>
-        <li>Brigar, punir ou gritar com seu cão</li>
-        <li>Comprar equipamentos caros</li>
-        <li>Passar horas treinando todos os dias</li>
+    <div style="background:#f4faf6;border-radius:14px;padding:18px 20px 20px;margin:16px 0 24px;text-align:left;">
+      <p style="font-weight:800;font-size:1rem;margin-bottom:14px;color:var(--verde-escuro);line-height:1.35;">Este programa é para você que tem um cão que…</p>
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;">
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:9px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Puxa durante os passeios</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:9px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Late para cães, pessoas ou barulhos</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:9px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Parece acelerado o tempo inteiro</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:9px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Não consegue relaxar dentro de casa</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:9px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Ignora você quando existe alguma distração</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:9px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Faz você repetir o mesmo comando várias vezes</li>
       </ul>
+    </div>
+
+    <div style="background:#f7fbf8;border:1.5px solid var(--sage-claro);border-radius:14px;padding:18px 20px;margin:0 0 20px;text-align:center;max-width:420px;margin-left:auto;margin-right:auto;">
+      <p style="color:var(--verde-medio);font-size:1rem;letter-spacing:.08em;margin-bottom:10px;">★★★★★</p>
+      <p style="font-size:.9rem;line-height:1.65;color:#333;font-style:italic;margin-bottom:10px;">"Antes o Fly puxava muito, não me obedecia e os passeios eram muito estressantes. Hoje ele está muito mais tranquilo e obediente."</p>
+      <p style="font-size:.78rem;font-weight:700;color:#777;letter-spacing:.04em;text-transform:uppercase;">Rosângela Marchesini</p>
     </div>
 
     <p style="font-size:.97rem;color:#555;text-align:center;margin-bottom:12px;">Seu cão aprende a desacelerar. E a convivência com ele volta a ser mais leve.</p>
     <div style="text-align:center;padding:0 20px;">
     <a href="https://chk.eduzz.com/dwt7yr3b" class="btn-cta" target="_blank" rel="noopener">
-      Quero Um Cão Mais Calmo
+      Quero Ensinar Meu Cão
     </a>
     </div>
     <p class="plans-guarantee" style="margin-top:10px;margin-bottom:32px;">Acesso imediato • Garantia incondicional de 7 dias</p>
@@ -1006,22 +1032,23 @@
     <h2 class="emotional-title">Talvez você esteja passando por isso…</h2>
 
     <ul class="emotional-list">
-      <li>Seu cão parece acelerado o tempo inteiro</li>
-      <li>Você termina os passeios mais cansado que ele</li>
-      <li>Ele late, puxa e reage a qualquer distração</li>
-      <li>As visitas chegam e o caos começa</li>
-      <li>Parece que seu cão nunca consegue relaxar de verdade</li>
-      <li>Você ama seu cão… mas às vezes sente exaustão</li>
+      <li>Você sai para passear tentando relaxar... e volta para casa mais cansado do que quando saiu.</li>
+      <li>Seu cão vê outro cachorro, uma pessoa ou qualquer distração... e parece esquecer completamente que você existe.</li>
+      <li>Você repete o mesmo comando várias vezes e sente que ele simplesmente não escuta.</li>
+      <li>Você gostaria de ter um cão mais tranquilo dentro de casa, mas ele parece estar sempre acelerado.</li>
+      <li>A campainha toca, uma visita chega ou acontece qualquer novidade... e o caos começa.</li>
+      <li>Você ama seu cão, mas às vezes sente que a convivência está mais difícil do que deveria.</li>
     </ul>
 
     <div class="emotional-highlight">
-      <p><strong>E o pior?</strong><br>
-      Quanto mais você tenta apenas "gastar energia", mais agitado ele parece ficar.</p>
+      <p><strong>E o mais frustrante?</strong><br>
+      Você tenta gastar energia, passear mais ou corrigir o comportamento, mas os problemas continuam aparecendo.</p>
     </div>
 
     <div class="emotional-mechanism">
-      <p>O problema não é só excesso de energia.<br>
-      É <strong>falta de direcionamento, estímulo correto e equilíbrio emocional.</strong></p>
+      <p>Isso acontece porque muitos cães não precisam apenas de mais exercício.<br>
+      Eles precisam desenvolver habilidades como <strong>calma, foco, autocontrole e conexão.</strong><br>
+      E é exatamente isso que você vai ensinar dentro do Programa Meu Cão Educado.</p>
     </div>
 
   </section>
@@ -1030,7 +1057,8 @@
   <div class="method-section">
 
     <div class="method-heading">
-      <h2>Tudo o que você precisa para ter um cão mais calmo e equilibrado</h2>
+      <h2>Desenvolva as habilidades que estão por trás de um cão mais calmo e obediente</h2>
+      <p style="font-size:.97rem;color:#555;line-height:1.6;margin-top:10px;max-width:560px;margin-left:auto;margin-right:auto;">Muitos problemas de comportamento melhoram quando o cão aprende a ter mais foco, autocontrole, confiança e conexão com você.</p>
     </div>
 
     <div class="method-blocks">
@@ -1038,55 +1066,56 @@
       <div class="method-block">
         <div class="method-block-header">
           <div class="method-block-dot"></div>
-          <p class="method-block-title">Controle da agitação e impulsividade</p>
+          <p class="method-block-title">Ajude seu cão a tomar decisões melhores</p>
         </div>
-        <p class="method-block-lead">Para cães que puxam no passeio, latem pra tudo, roubam comida, pulam nas pessoas ou vivem acelerados o tempo inteiro.</p>
+        <p class="method-block-lead">Atividades que estimulam o cérebro, desenvolvem autocontrole e ajudam seu cão a pensar antes de agir. Ideal para cães que puxam, latem, roubam comida, pulam nas pessoas ou vivem agindo por impulso.</p>
         <div class="method-tags">
-          <span class="method-tag">Controle de impulsos</span>
-          <span class="method-tag">Foco</span>
           <span class="method-tag">Autocontrole</span>
-          <span class="method-tag">Obediência funcional</span>
+          <span class="method-tag">Foco</span>
+          <span class="method-tag">Tomada de decisão</span>
+          <span class="method-tag">Controle de impulsos</span>
         </div>
       </div>
 
       <div class="method-block">
         <div class="method-block-header">
           <div class="method-block-dot"></div>
-          <p class="method-block-title">Exercícios para regular energia e comportamento</p>
+          <p class="method-block-title">Cansar não é o suficiente</p>
         </div>
-        <p class="method-block-lead">Atividades físicas e mentais para ajudar seu cão a desacelerar, relaxar, focar mais em você e parar de aprontar por tédio.</p>
+        <p class="method-block-lead">Aprenda atividades que reduzem o estresse, estimulam o cérebro e ajudam seu cão a relaxar de verdade. Perfeito para cães agitados, acelerados ou que parecem ter energia infinita.</p>
         <div class="method-tags">
-          <span class="method-tag">Faro</span>
           <span class="method-tag">Estimulação mental</span>
+          <span class="method-tag">Redução de estresse</span>
+          <span class="method-tag">Faro</span>
           <span class="method-tag">Resolução de problemas</span>
-          <span class="method-tag">Exercícios para cães com energia intensa</span>
         </div>
       </div>
 
       <div class="method-block">
         <div class="method-block-header">
           <div class="method-block-dot"></div>
-          <p class="method-block-title">Mais calma e conexão nos passeios</p>
+          <p class="method-block-title">Faça seu cão prestar mais atenção em você</p>
         </div>
-        <p class="method-block-lead">Exercícios para ensinar seu cão a prestar atenção em você, ignorar distrações, caminhar com mais calma e reduzir reatividade e ansiedade.</p>
+        <p class="method-block-lead">Atividades que fortalecem a conexão, desenvolvem foco e ajudam seu cão a lidar melhor com distrações durante os passeios.</p>
         <div class="method-tags">
-          <span class="method-tag">Atenção em você</span>
-          <span class="method-tag">Reatividade</span>
-          <span class="method-tag">Ansiedade</span>
-          <span class="method-tag">Exercícios de inteligência e foco</span>
+          <span class="method-tag">Conexão</span>
+          <span class="method-tag">Foco</span>
+          <span class="method-tag">Passeios</span>
+          <span class="method-tag">Distrações</span>
         </div>
       </div>
 
       <div class="method-block">
         <div class="method-block-header">
           <div class="method-block-dot"></div>
-          <p class="method-block-title">Confiança, coordenação e equilíbrio emocional</p>
+          <p class="method-block-title">Um cão mais confiante e equilibrado</p>
         </div>
-        <p class="method-block-lead">Perfeito para cães inseguros, ansiosos, estabanados, muito reativos ou com dificuldade de relaxar.</p>
+        <p class="method-block-lead">Atividades que desenvolvem consciência corporal, fortalecem a confiança e ajudam na regulação emocional. Ideal para cães inseguros, ansiosos ou que reagem demais ao ambiente.</p>
         <div class="method-tags">
+          <span class="method-tag">Confiança</span>
           <span class="method-tag">Consciência corporal</span>
-          <span class="method-tag">Exercícios de confiança</span>
-          <span class="method-tag">Instintos naturais</span>
+          <span class="method-tag">Regulação emocional</span>
+          <span class="method-tag">Equilíbrio emocional</span>
         </div>
       </div>
 
@@ -1094,11 +1123,37 @@
   </div>
 
   <div class="btn-cta-wrap">
-    <div class="precta-wrap"><p class="precta-intro">Pequenos exercícios.</p><p class="precta-headline">Mais calma, conexão e equilíbrio no dia a dia com seu cão.</p></div>
+    <div class="precta-wrap"><p class="precta-intro">Pequenas atividades.</p><p class="precta-headline">Mais calma, conexão e equilíbrio no dia a dia com seu cão.</p></div>
     <a href="https://chk.eduzz.com/dwt7yr3b" class="btn-cta" target="_blank" rel="noopener">
-      Quero Um Cão Mais Calmo
+      Quero Ensinar Meu Cão
     </a>
     <p class="plans-guarantee">Acesso imediato • Garantia incondicional de 7 dias</p>
+  </div>
+
+  <!-- ===== O QUE VOCÊ VAI ENCONTRAR ===== -->
+  <div style="max-width:700px;margin:0 auto;padding:8px 20px 32px;">
+    <div style="text-align:center;margin-bottom:24px;">
+      <h2 style="font-size:clamp(1.2rem,5vw,1.5rem);font-weight:800;color:var(--preto);line-height:1.25;margin-bottom:10px;">O que você vai encontrar dentro do Programa Meu Cão Educado</h2>
+      <p style="font-size:.97rem;color:#555;line-height:1.6;max-width:540px;margin:0 auto;">Mais de 60 atividades organizadas para ajudar seu cão a desenvolver calma, foco, autocontrole, confiança e conexão no dia a dia.</p>
+    </div>
+
+    <div style="background:var(--creme-verde);border-radius:16px;padding:24px 24px 20px;">
+      <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:13px;">
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Atividades para ajudar seu cão a relaxar dentro de casa</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Atividades para aumentar a atenção durante os passeios</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Jogos de faro para estimular o cérebro e reduzir o estresse</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Atividades para cães muito agitados ou acelerados</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Atividades de autocontrole e tomada de decisão</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Atividades para fortalecer a conexão entre você e seu cão</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Atividades para desenvolver confiança e equilíbrio emocional</li>
+        <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Protocolos simples que levam apenas alguns minutos por dia</li>
+      </ul>
+
+      <div style="border-top:1px solid var(--sage-claro);margin-top:20px;padding-top:18px;text-align:center;">
+        <p style="font-size:.97rem;font-weight:700;color:var(--verde-escuro);line-height:1.6;margin-bottom:4px;">Mais de 60 atividades organizadas por objetivo e nível de dificuldade.</p>
+        <p style="font-size:.93rem;color:#555;line-height:1.6;">Assim você sabe exatamente por onde começar, mesmo que nunca tenha treinado um cão antes.</p>
+      </div>
+    </div>
   </div>
 
   <!-- ===== PROVA SOCIAL ===== -->
@@ -1187,7 +1242,7 @@
 
   <!-- ===== USE ESTAS BRINCADEIRAS PARA ===== -->
   <div class="benefits-wrap">
-    <h2 class="benefits-title">Com os exercícios certos, seu cão aprende a…</h2>
+    <h2 class="benefits-title">Com as atividades certas, seu cão aprende a…</h2>
     <ul class="benefits-list">
       <li>Prestar atenção em você mesmo em ambientes cheios de distrações</li>
       <li>Desacelerar e relaxar mesmo nos dias mais corridos</li>
@@ -1200,9 +1255,9 @@
 
   <!-- ===== CTA PREÇO 2 ===== -->
   <div style="text-align:center;padding:24px 20px 8px;">
-    <p style="font-size:.97rem;color:#555;margin-bottom:12px;">Seu cão aprende a desacelerar. E a convivência com ele volta a ser mais leve.</p>
+    <p style="font-size:.97rem;color:#555;margin-bottom:12px;">Mais calma para o seu cão. Mais tranquilidade para você.</p>
     <a href="https://chk.eduzz.com/dwt7yr3b" class="btn-cta" style="max-width:420px;display:inline-block;" target="_blank" rel="noopener">
-      Quero Um Cão Mais Calmo
+      Quero Ensinar Meu Cão
     </a>
     <p class="plans-guarantee" style="margin-top:16px;">Acesso imediato • Garantia incondicional de 7 dias</p>
   </div>
@@ -1231,37 +1286,27 @@
           Funciona mesmo para cães muito agitados ou que "não obedecem"?
         </button>
         <div class="faq-answer">
-          Sim. Mesmo cães mais agitados, teimosos ou que parecem "não prestar atenção" conseguem evoluir quando você usa os exercícios certos e cria mais clareza na comunicação com eles.
+          Sim. Mesmo cães mais agitados, teimosos ou que parecem "não prestar atenção" conseguem evoluir quando você usa as atividades certas e cria mais clareza na comunicação com eles.
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           <span class="faq-plus" aria-hidden="true">+</span>
-          Em quanto tempo começo a perceber mudanças?
+          Em quanto tempo meu cão pode começar a mudar?
         </button>
         <div class="faq-answer">
-          Muitas pessoas já percebem diferenças nas primeiras semanas, principalmente em foco, atenção e calma no dia a dia. Mas a evolução depende da frequência dos exercícios e da rotina de cada cão.
+          Muitas pessoas já percebem diferenças nas primeiras semanas, principalmente em foco, atenção e calma no dia a dia. Mas a evolução depende da frequência das atividades e da rotina de cada cão.
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           <span class="faq-plus" aria-hidden="true">+</span>
-          Preciso ter experiência?
+          Preciso ter experiência ou conhecimento em adestramento?
         </button>
         <div class="faq-answer">
-          Não! O programa foi pensado exatamente para quem começa do zero. As instruções são claras, em vídeos, fotos e textos com passo a passo detalhado para que qualquer pessoa consiga aplicar em casa.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span class="faq-plus" aria-hidden="true">+</span>
-          Vai ser difícil de aplicar?
-        </button>
-        <div class="faq-answer">
-          Não. Os exercícios foram pensados para serem simples de aplicar dentro da rotina real da maioria das pessoas, mesmo para quem nunca treinou um cão antes.
+          Não. O programa foi criado para pessoas comuns. As atividades são explicadas em vídeos, fotos e textos passo a passo para que qualquer pessoa consiga aplicar no dia a dia, mesmo sem experiência prévia.
         </div>
       </div>
 
@@ -1271,7 +1316,7 @@
           Preciso de horas de treino por dia?
         </button>
         <div class="faq-answer">
-          Não. A maioria dos exercícios leva entre 5 e 10 minutos e pode ser encaixada facilmente na rotina do dia a dia.
+          Não. A maioria das atividades leva entre 5 e 10 minutos e pode ser encaixada facilmente na rotina do dia a dia.
         </div>
       </div>
 
@@ -1281,27 +1326,27 @@
           Preciso de algum equipamento especial?
         </button>
         <div class="faq-answer">
-          Não. Só uma guia, petiscos e alguns objetos que certamente você já tem em casa.
+          Não. Você só vai precisar de uma guia, petiscos e alguns objetos que provavelmente já tem em casa.
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           <span class="faq-plus" aria-hidden="true">+</span>
-          Como o conteúdo está organizado?
+          Como vou acessar o programa após a compra?
         </button>
         <div class="faq-answer">
-          Os exercícios estão divididos por módulos e níveis de dificuldade, para você saber por onde começar e avançar conforme o progresso do seu cão.
+          O programa é 100% online e você recebe acesso imediato após a compra. Após a confirmação do pagamento, você recebe por e-mail os dados de acesso à plataforma Nutror/Eduzz. As atividades são organizadas por módulos e níveis de dificuldade, com explicações em vídeos, fotos e textos para facilitar a aplicação no dia a dia. Você pode acessar quando quiser, no seu ritmo, pelo celular, tablet ou computador. Não existem aulas ao vivo obrigatórias nem horários marcados.
         </div>
       </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
           <span class="faq-plus" aria-hidden="true">+</span>
-          Como acessar o conteúdo?
+          As atividades substituem os passeios?
         </button>
         <div class="faq-answer">
-          Após a confirmação do pagamento, você recebe por e-mail o acesso à plataforma Nutror/Eduzz. Todo o conteúdo fica disponível lá e pode ser acessado por: celular, tablet ou computador.
+          Não. Os passeios continuam sendo importantes para o bem-estar do seu cão. As atividades funcionam como complemento para desenvolver foco, calma, autocontrole e conexão, ajudando seu cão a aproveitar melhor os momentos do dia a dia.
         </div>
       </div>
 
@@ -1345,26 +1390,16 @@
         </div>
 
         <div class="about-text-col">
-          <span class="about-eyebrow">Mais de 15 anos ajudando cães agitados a viverem com mais calma e equilíbrio</span>
-          <h2 class="about-name">Diego<span>Lima</span></h2>
-          <p class="about-bio">Veterinário e especialista em comportamento canino, ajudando pessoas a entenderem melhor seus cães e criarem uma convivência mais leve dentro e fora de casa.</p>
+          <span class="about-eyebrow">Diego Lima — Veterinário e Especialista em Comportamento Canino</span>
+          <h2 class="about-name" style="font-size:clamp(1rem,3.5vw,1.25rem);margin-bottom:12px;font-weight:800;color:var(--preto);line-height:1.3;">Por que eu criei o Programa Meu Cão Educado</h2>
+          <p class="about-bio" style="margin-bottom:10px;">Durante anos trabalhando com comportamento canino, percebi que muitas pessoas tentavam corrigir latidos, puxões e agitação sem resolver a causa do problema.</p>
+          <p class="about-bio" style="margin-bottom:8px;">Por isso passei a focar no desenvolvimento de habilidades como <span style="color:var(--verde-escuro);font-weight:700;">calma</span>, <span style="color:var(--verde-escuro);font-weight:700;">foco</span>, <span style="color:var(--verde-escuro);font-weight:700;">autocontrole</span>, <span style="color:var(--verde-escuro);font-weight:700;">confiança</span> e <span style="color:var(--verde-escuro);font-weight:700;">conexão</span>. Quando essas habilidades evoluem, muitos problemas começam a melhorar naturalmente.</p>
+          <p class="about-bio" style="margin-bottom:14px;">Foi dessa experiência que nasceu o Programa Meu Cão Educado.</p>
           <ul class="about-items">
-            <li class="about-item">
-              <div class="about-icon"></div>
-              <div class="about-item-text">Veterinário formado desde <strong>2006</strong></div>
-            </li>
-            <li class="about-item">
-              <div class="about-icon"></div>
-              <div class="about-item-text">Trabalhando com comportamento e adestramento desde <strong>2008</strong></div>
-            </li>
-            <li class="about-item">
-              <div class="about-icon"></div>
-              <div class="about-item-text">Experiência com cães de <strong>diferentes raças, idades e níveis de reatividade</strong></div>
-            </li>
-            <li class="about-item">
-              <div class="about-icon"></div>
-              <div class="about-item-text">Método baseado em <strong>estímulo correto, clareza e equilíbrio emocional.</strong> Sem punição, broncas ou gritos</div>
-            </li>
+            <li class="about-item"><div class="about-icon"></div><div class="about-item-text">Veterinário desde <strong>2006</strong></div></li>
+            <li class="about-item"><div class="about-icon"></div><div class="about-item-text">Trabalhando com comportamento e adestramento desde <strong>2008</strong></div></li>
+            <li class="about-item"><div class="about-icon"></div><div class="about-item-text">Experiência com cães de <strong>diferentes perfis comportamentais</strong></div></li>
+            <li class="about-item"><div class="about-icon"></div><div class="about-item-text"><strong>Método sem punições ou intimidação</strong></div></li>
           </ul>
         </div>
 
@@ -1374,9 +1409,9 @@
 
   <!-- ===== CTA FINAL ===== -->
   <div class="btn-cta-wrap">
-    <div class="precta-wrap"><p class="precta-intro">Pequenos exercícios.</p><p class="precta-headline">Mais calma, conexão e equilíbrio no dia a dia com seu cão.</p></div>
+    <div class="precta-wrap"><p class="precta-intro">Pequenas atividades.</p><p class="precta-headline">Mais calma, conexão e equilíbrio no dia a dia com seu cão.</p></div>
     <a href="https://chk.eduzz.com/dwt7yr3b" class="btn-cta" target="_blank" rel="noopener">
-      Quero Um Cão Mais Calmo
+      Quero Ensinar Meu Cão
     </a>
     <p class="plans-guarantee">Acesso imediato • Garantia incondicional de 7 dias</p>
   </div>
