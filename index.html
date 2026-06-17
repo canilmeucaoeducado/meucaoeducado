@@ -921,20 +921,67 @@
     }
 
     .emotional-mechanism {
-      padding: 4px 8px 8px;
-      margin-top: -4px;
+      background: #fff;
+      border: 1px solid #eef3ef;
+      border-left: 4px solid var(--verde-escuro);
+      border-radius: 14px;
+      padding: 24px 24px 20px;
+      margin-top: 8px;
     }
 
-    .emotional-mechanism p {
-      font-size: .97rem;
-      line-height: 1.7;
-      color: #555;
-      text-align: center;
-    }
-
-    .emotional-mechanism strong {
+    .mechanism-tese {
+      font-size: 1.2rem;
+      font-weight: 900;
       color: var(--preto);
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+
+    .mechanism-intro {
+      font-size: .97rem;
+      font-weight: 500;
+      color: #444;
+      margin-bottom: 10px;
+    }
+
+    .mechanism-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 0;
+      text-align: left;
+    }
+
+    .mechanism-list li {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--preto);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mechanism-list li::before {
+      content: "✓";
+      color: var(--verde-medio);
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .mechanism-list li strong {
+      font-weight: 900;
+      color: var(--verde-escuro);
+    }
+
+    .mechanism-close {
+      font-size: .95rem;
       font-weight: 700;
+      color: var(--verde-escuro);
+      padding-top: 14px;
+      border-top: 1px solid var(--sage-claro);
+      line-height: 1.5;
     }
 
     @media (max-width: 480px) {
@@ -942,6 +989,27 @@
       .emotional-list { padding: 0; gap: 16px; }
       .emotional-list li { font-size: 1rem; }
       .emotional-highlight { padding: 22px 20px; }
+    }
+
+    .hero-proof-image {
+      max-width: 420px;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+
+    .hero-proof-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      border: 1px solid #eef3ef;
+    }
+
+    .hero-proof-caption {
+      margin-top: 10px;
+      font-size: .82rem;
+      color: #666;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -1010,10 +1078,24 @@
       </ul>
     </div>
 
-    <div style="background:#f7fbf8;border:1.5px solid var(--sage-claro);border-radius:14px;padding:18px 20px;margin:0 0 20px;text-align:center;max-width:420px;margin-left:auto;margin-right:auto;">
-      <p style="color:var(--verde-medio);font-size:1rem;letter-spacing:.08em;margin-bottom:10px;">★★★★★</p>
-      <p style="font-size:.9rem;line-height:1.65;color:#333;font-style:italic;margin-bottom:10px;">"Antes o Fly puxava muito, não me obedecia e os passeios eram muito estressantes. Hoje ele está muito mais tranquilo e obediente."</p>
-      <p style="font-size:.78rem;font-weight:700;color:#777;letter-spacing:.04em;text-transform:uppercase;">Rosângela M.</p>
+    <div class="hero-proof-image">
+      <p style="
+        font-size:.9rem;
+        font-weight:700;
+        color:var(--verde-escuro);
+        text-align:center;
+        margin-bottom:10px;
+      ">
+        Veja o que aconteceu após aplicar as atividades:
+      </p>
+      <img
+        src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_dior2.webp"
+        alt="Resultado de aluna do Programa Meu Cão Educado"
+        width="600"
+        height="600"
+        loading="eager"
+        decoding="async"
+      />
     </div>
 
     <p style="font-size:.97rem;color:#555;text-align:center;margin-bottom:12px;">Seu cão aprende a desacelerar. E a convivência com ele volta a ser mais leve.</p>
@@ -1034,27 +1116,58 @@
     <ul class="emotional-list">
       <li>Você sai para passear tentando relaxar... e volta para casa mais cansado do que quando saiu.</li>
       <li>Seu cão vê outro cachorro, uma pessoa ou qualquer distração... e parece esquecer completamente que você existe.</li>
-      <li>Você repete o mesmo comando várias vezes e sente que ele simplesmente não escuta.</li>
       <li>Você gostaria de ter um cão mais tranquilo dentro de casa, mas ele parece estar sempre acelerado.</li>
-      <li>A campainha toca, uma visita chega ou acontece qualquer novidade... e o caos começa.</li>
-      <li>Você ama seu cão, mas às vezes sente que a convivência está mais difícil do que deveria.</li>
     </ul>
 
     <div class="emotional-highlight">
-      <p><strong>E o mais frustrante?</strong><br>
-      Você tenta gastar energia, passear mais ou corrigir o comportamento, mas os problemas continuam aparecendo.</p>
+      <p>
+        <strong>E o mais frustrante?</strong><br>
+        Você tenta passear mais, gastar energia ou corrigir o comportamento, mas os problemas continuam aparecendo.
+      </p>
     </div>
 
     <div class="emotional-mechanism">
-      <p>Isso acontece porque muitos cães não precisam apenas de mais exercício.<br>
-      Eles precisam desenvolver habilidades como <strong>calma, foco, autocontrole e conexão.</strong><br>
-      E é exatamente isso que você vai ensinar dentro do Programa Meu Cão Educado.</p>
+      <p class="mechanism-tese">
+        Muitos cães não precisam apenas de mais passeios.
+      </p>
+      <p class="mechanism-intro">
+        Eles precisam aprender a:
+      </p>
+      <ul class="mechanism-list">
+        <li><strong>Relaxar</strong></li>
+        <li>Desenvolver foco</li>
+        <li>Ter mais autocontrole</li>
+        <li>Criar mais conexão com você</li>
+      </ul>
+      <p class="mechanism-close">
+        É exatamente isso que o Programa Meu Cão Educado ensina.
+      </p>
     </div>
 
   </section>
 
   <!-- ===== MÉTODO — 4 BLOCOS ===== -->
   <div class="method-section">
+
+    <div class="hero-proof-image">
+      <p style="
+        font-size:.9rem;
+        font-weight:700;
+        color:var(--verde-escuro);
+        text-align:center;
+        margin-bottom:10px;
+      ">
+        Veja o que aconteceu em poucas semanas:
+      </p>
+      <img
+        src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_tully_2.webp"
+        alt="Resultado de aluna do Programa Meu Cão Educado"
+        width="600"
+        height="600"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
 
     <div class="method-heading">
       <h2>Desenvolva as habilidades que estão por trás de um cão mais calmo e obediente</h2>
@@ -1066,29 +1179,17 @@
       <div class="method-block">
         <div class="method-block-header">
           <div class="method-block-dot"></div>
-          <p class="method-block-title">Ajude seu cão a tomar decisões melhores</p>
+          <p class="method-block-title">Passear mais não é o suficiente</p>
         </div>
-        <p class="method-block-lead">Atividades que estimulam o cérebro, desenvolvem autocontrole e ajudam seu cão a pensar antes de agir. Ideal para cães que puxam, latem, roubam comida, pulam nas pessoas ou vivem agindo por impulso.</p>
-        <div class="method-tags">
-          <span class="method-tag">Autocontrole</span>
-          <span class="method-tag">Foco</span>
-          <span class="method-tag">Tomada de decisão</span>
-          <span class="method-tag">Controle de impulsos</span>
-        </div>
+        <p class="method-block-lead">Aprenda atividades que reduzem o estresse, estimulam o cérebro e ajudam seu cão a relaxar de verdade. Perfeito para cães agitados, acelerados ou que parecem ter energia infinita.</p>
       </div>
 
       <div class="method-block">
         <div class="method-block-header">
           <div class="method-block-dot"></div>
-          <p class="method-block-title">Cansar não é o suficiente</p>
+          <p class="method-block-title">Ajude seu cão a tomar decisões melhores</p>
         </div>
-        <p class="method-block-lead">Aprenda atividades que reduzem o estresse, estimulam o cérebro e ajudam seu cão a relaxar de verdade. Perfeito para cães agitados, acelerados ou que parecem ter energia infinita.</p>
-        <div class="method-tags">
-          <span class="method-tag">Estimulação mental</span>
-          <span class="method-tag">Redução de estresse</span>
-          <span class="method-tag">Faro</span>
-          <span class="method-tag">Resolução de problemas</span>
-        </div>
+        <p class="method-block-lead">Atividades que estimulam o cérebro, desenvolvem autocontrole e ajudam seu cão a pensar antes de agir. Ideal para cães que puxam, latem, roubam comida, pulam nas pessoas ou vivem agindo por impulso.</p>
       </div>
 
       <div class="method-block">
@@ -1097,12 +1198,6 @@
           <p class="method-block-title">Faça seu cão prestar mais atenção em você</p>
         </div>
         <p class="method-block-lead">Atividades que fortalecem a conexão, desenvolvem foco e ajudam seu cão a lidar melhor com distrações durante os passeios.</p>
-        <div class="method-tags">
-          <span class="method-tag">Conexão</span>
-          <span class="method-tag">Foco</span>
-          <span class="method-tag">Passeios</span>
-          <span class="method-tag">Distrações</span>
-        </div>
       </div>
 
       <div class="method-block">
@@ -1111,12 +1206,6 @@
           <p class="method-block-title">Um cão mais confiante e equilibrado</p>
         </div>
         <p class="method-block-lead">Atividades que desenvolvem consciência corporal, fortalecem a confiança e ajudam na regulação emocional. Ideal para cães inseguros, ansiosos ou que reagem demais ao ambiente.</p>
-        <div class="method-tags">
-          <span class="method-tag">Confiança</span>
-          <span class="method-tag">Consciência corporal</span>
-          <span class="method-tag">Regulação emocional</span>
-          <span class="method-tag">Equilíbrio emocional</span>
-        </div>
       </div>
 
     </div>
@@ -1134,7 +1223,7 @@
   <div style="max-width:700px;margin:0 auto;padding:8px 20px 32px;">
     <div style="text-align:center;margin-bottom:24px;">
       <h2 style="font-size:clamp(1.2rem,5vw,1.5rem);font-weight:800;color:var(--preto);line-height:1.25;margin-bottom:10px;">O que você vai encontrar dentro do Programa Meu Cão Educado</h2>
-      <p style="font-size:.97rem;color:#555;line-height:1.6;max-width:540px;margin:0 auto;">Mais de 60 atividades organizadas para ajudar seu cão a desenvolver calma, foco, autocontrole, confiança e conexão no dia a dia.</p>
+      <p style="font-size:.97rem;color:#555;line-height:1.6;max-width:540px;margin:0 auto;">Atividades organizadas para ajudar seu cão a desenvolver calma, foco, autocontrole, confiança e conexão no dia a dia.</p>
     </div>
 
     <div style="background:var(--creme-verde);border-radius:16px;padding:24px 24px 20px;">
@@ -1149,11 +1238,6 @@
         <li style="font-size:.97rem;line-height:1.5;display:flex;align-items:flex-start;gap:10px;color:#222;"><span style="flex-shrink:0;margin-top:1px;">✅</span> Protocolos simples que levam apenas alguns minutos por dia</li>
       </ul>
 
-      <div style="border-top:1px solid var(--sage-claro);margin-top:20px;padding-top:18px;text-align:center;">
-        <p style="font-size:.97rem;font-weight:700;color:var(--verde-escuro);line-height:1.6;margin-bottom:4px;">Mais de 60 atividades organizadas por objetivo e nível de dificuldade.</p>
-        <p style="font-size:.93rem;color:#555;line-height:1.6;margin-bottom:4px;">Acesso por 2 anos para consultar o conteúdo sempre que precisar.</p>
-        <p style="font-size:.93rem;color:#555;line-height:1.6;">Assim você sabe exatamente por onde começar, mesmo que nunca tenha treinado um cão antes.</p>
-      </div>
     </div>
   </div>
 
@@ -1168,18 +1252,13 @@
       <div class="proof-carousel" id="proofCarousel">
 
         <div class="proof-card">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/Depoimentos_Dior.webp"
-               alt="Depoimento Dior" width="280" height="350"
-               loading="lazy" decoding="async">
-        </div>
-        <div class="proof-card">
           <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_ramon_doguealemao.webp"
-               alt="Depoimento Ramon e Dogue Alemão" width="280" height="350"
+               alt="Card1" width="280" height="350"
                loading="lazy" decoding="async">
         </div>
         <div class="proof-card">
           <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoimento_rosangela_fly.webp"
-               alt="Depoimento Rosangela e Fly" width="280" height="350"
+               alt="Card2" width="280" height="350"
                loading="lazy" decoding="async">
         </div>
         <div class="proof-card">
@@ -1188,13 +1267,8 @@
                loading="lazy" decoding="async">
         </div>
         <div class="proof-card">
-          <img src="https://canilmeucaoeducado.github.io/meucaoeducado/depoime_mari_tully.webp"
-               alt="Depoimento Mari e Tully" width="280" height="350"
-               loading="lazy" decoding="async">
-        </div>
-        <div class="proof-card">
           <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card2.webp"
-               alt="Depoimento Pedro e Rock" width="280" height="350"
+               alt="Card3" width="280" height="350"
                loading="lazy" decoding="async">
         </div>
         <div class="proof-card">
@@ -1209,7 +1283,7 @@
         </div>
         <div class="proof-card">
           <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card4.webp"
-               alt="Depoimento Beto e Max" width="280" height="350"
+               alt="Card4" width="280" height="350"
                loading="lazy" decoding="async">
         </div>
         <div class="proof-card">
@@ -1219,7 +1293,7 @@
         </div>
         <div class="proof-card">
           <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card3.webp"
-               alt="Depoimento Ros e Duque" width="280" height="350"
+               alt="Card5" width="280" height="350"
                loading="lazy" decoding="async">
         </div>
         <div class="proof-card">
@@ -1229,7 +1303,7 @@
         </div>
         <div class="proof-card">
           <img src="https://canilmeucaoeducado.github.io/meucaoeducado/card1.webp"
-               alt="Depoimento Jeane e Jade" width="280" height="350"
+               alt="Card6" width="280" height="350"
                loading="lazy" decoding="async">
         </div>
 
