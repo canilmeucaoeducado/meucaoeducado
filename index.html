@@ -154,6 +154,7 @@
   }
   .never-list li::before{content:'✕';position:absolute;left:0;color:var(--clay);font-weight:800;}
   .never-list li.positive::before{content:'✓';color:var(--forest);}
+  .never-list li.strike{text-decoration:line-through;text-decoration-color:#000;text-decoration-thickness:1px;opacity:.85;}
 
   /* How it works steps */
   .flow{display:flex;flex-direction:column;gap:0;margin-top:44px;}
@@ -314,7 +315,7 @@ window.addEventListener('load', function() {
     <span class="eyebrow">O que realmente resolve</span>
     <h2 class="title">Todo cão tem um interruptor interno.</h2>
     <p class="lead">Quando algo acontece (a campainha, a visita, outro cão passando), esse interruptor liga sozinho. Isso é instinto, todo cão tem.</p>
-    <p class="lead" style="margin-top:14px;">A diferença entre um cão agitado e teimoso, e um cão calmo e obediente é o que acontece logo depois que o interruptor liga.</p>
+    <p class="lead" style="margin-top:14px;">A diferença entre um cão agitado e teimoso e um cão calmo e obediente é o que acontece logo depois que o interruptor liga.</p>
 
     <div class="quote-block" style="text-align:left;">Seu cão não precisa viver "numa bolha" isolado do mundo. Precisa aprender a segurar o próprio interruptor por um instante antes de agir.</div>
 
@@ -382,9 +383,9 @@ window.addEventListener('load', function() {
   <div class="container">
     <span class="eyebrow">Quem desenvolveu esse programa</span>
     <h2 class="title">Me chamo Diego Lima, sou veterinário desde 2006 e vi esse padrão se repetir centenas de vezes.</h2>
-    <p class="lead">Trabalho com comportamento canino desde 2008. Atendendo cães agitados dentro de casa, ano após ano, eu via sempre a mesma coisa: pessoa fazendo o passeio cada vez mais longo, e o cão voltando exatamente do mesmo jeito.</p>
-    <p class="lead" style="margin-top:16px;">Quando troquei o foco, de gastar energia pra treinar autocontrole, o comportamento começou a mudar em semanas. Não porque o cão estava mais cansado. Alguma coisa mudou por dentro.</p>
-    <p class="lead" style="margin-top:16px;">O Programa Meu Cão Educado nasceu pra colocar esse processo na mão de qualquer pessoa, sem precisar de experiência anterior.</p>
+    <p class="lead">Trabalho com comportamento canino desde 2008. Atendendo cães agitados dentro de casa, ano após ano, eu via sempre a mesma coisa: a pessoa fazendo o passeio cada vez mais longo, e o cão voltando exatamente do mesmo jeito.</p>
+    <p class="lead" style="margin-top:16px;">Quando troquei o foco de gastar energia para treinar autocontrole, o comportamento começou a mudar em semanas. Não porque o cão estava mais cansado. Alguma coisa mudou por dentro.</p>
+    <p class="lead" style="margin-top:16px;">O Programa Meu Cão Educado nasceu pra colocar esse processo nas mãos de qualquer pessoa, sem precisar de experiência anterior.</p>
   </div>
 </section>
 
@@ -394,9 +395,9 @@ window.addEventListener('load', function() {
     <span class="eyebrow">O que muda a partir de agora</span>
     <h2 class="title">Você deixa de colecionar dicas soltas e passa a seguir um método.</h2>
     <ul class="never-list">
-      <li>Esperar que ele mude sozinho com o tempo.</li>
-      <li>Testar uma dica diferente toda semana.</li>
-      <li>Ficar sem saber o que fazer quando um problema aparece.</li>
+      <li class="strike">Esperar que ele mude sozinho com o tempo.</li>
+      <li class="strike">Catar dicas na internet, torcendo para alguma funcionar.</li>
+      <li class="strike">Ficar sem saber o que fazer quando um problema aparece.</li>
       <li class="positive">Seguir um programa com passo a passo claro para desenvolver calma, obediência e autocontrole.</li>
     </ul>
   </div>
@@ -444,8 +445,8 @@ window.addEventListener('load', function() {
         <li>✅ Um caminho claro para saber o que fazer primeiro, depois e em seguida.</li>
         <li>✅ Funciona para filhotes, cães adultos e qualquer raça.</li>
         <li>✅ Acesso por 5 anos, para revisar sempre que precisar.</li>
-        <li>🎁 Bônus: Como treinar cães que não se interessam por comida</li>
-        <li>🎁 Bônus: Acesso aos "Amigos Próximos" no Instagram com conteúdos exclusivos para alunos</li>
+        <li>🎁 Bônus: Como treinar cães que não se interessam por comida.</li>
+        <li>🎁 Bônus: Acesso aos "Amigos Próximos" no Instagram com conteúdos exclusivos para alunos.</li>
       </ul>
       <p style="font-size:14px;color:rgba(241,236,221,0.85);margin-bottom:4px;">Tudo isso por apenas</p>
       <div class="price-tag">12x de R$ 20,37</div>
