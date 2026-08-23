@@ -50,8 +50,8 @@
     /* Extra tokens */
     --navy: #3B4D1E;
     --royal: #2d3d15;
-    --cta: #5A6B2D;
-    --cta-dark: #3B4D1E;
+    --cta: #7A9440;
+    --cta-dark: #5A6B2D;
     --link: #5A6B2D;
     --check-green: #5A6B2D;
     --star: #78874B;
@@ -76,7 +76,7 @@
 
   /* ========== HERO ========== */
   .hero {
-    background: var(--dark2);
+    background: var(--dark2) url('https://canilmeucaoeducado.github.io/meucaoeducado/preview.webp') center center / cover no-repeat;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -85,7 +85,16 @@
     overflow: hidden;
     padding: 80px 20px 80px;
   }
-  
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.40);
+    pointer-events: none;
+    z-index: 0;
+  }
+
   .hero::after {
     content: '';
     position: absolute;
@@ -132,53 +141,43 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: var(--orange-glow);
-    border: 1px solid rgba(90,107,45,0.30);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.35);
     border-radius: 100px;
     padding: 6px 16px;
     font-size: 16px;
     font-weight: 600;
-    color: #3B4D1E;
+    color: #ffffff;
     letter-spacing: 0.05em;
     text-transform: uppercase;
     margin-bottom: 28px;
     animation: fade-up 0.6s ease both;
   }
 
-  .badge-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--orange);
-    animation: blink 1.5s infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
-
   .hero-title {
     font-family: 'Outfit', Arial, sans-serif;
     font-size: clamp(40px, 7vw, 80px);
     font-weight: 800;
-    -webkit-text-stroke: 0.5px #3B4D1E;
+    -webkit-text-stroke: 0px transparent;
     line-height: 1.05;
     text-align: center;
     max-width: 860px;
     letter-spacing: 0.02em;
     animation: fade-up 0.7s 0.1s ease both;
-    color: #3B4D1E;
+    color: #ffffff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.5);
     text-wrap: balance;
   }
 
   .hero-title span {
-    color: #3B4D1E;
+    color: #ffffff;
     display: block;
   }
 
   .hero-sub {
     font-size: clamp(16px, 2vw, 20px);
-    color: #4B3C1E;
+    color: #f2f2f2;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.5);
     text-align: center;
     max-width: 580px;
     margin: 24px auto 0;
@@ -225,15 +224,15 @@
     position: absolute;
     inset: 0;
     border-radius: 6px;
-    box-shadow: 0 0 20px rgba(90,107,45,0.7), 0 0 50px rgba(90,107,45,0.3);
-    opacity: 0.4;
-    animation: neon-pulse 2.5s ease-in-out infinite;
+    box-shadow: 0 0 24px rgba(122,148,64,0.9), 0 0 60px rgba(122,148,64,0.5);
+    opacity: 0.5;
+    animation: neon-pulse 1.6s ease-in-out infinite;
     pointer-events: none;
   }
 
   @keyframes neon-pulse {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.9; }
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
   }
 
   .btn-primary::before {
@@ -269,11 +268,12 @@
     gap: 20px;
     font-size: 16px;
     font-weight: 700;
-    color: #3B4D1E;
+    color: #ffffff;
+    text-shadow: 0 1px 6px rgba(0,0,0,0.5);
     animation: fade-up 0.7s 0.4s ease both;
   }
 
-  .trust-divider { width: 1px; height: 20px; background: var(--white10); }
+  .trust-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.35); }
 
   /* ========== VIDEO SECTION ========== */
   .video-section {
@@ -882,13 +882,18 @@ background: linear-gradient(90deg, var(--orange), var(--orange-light));
 
     /* HERO */
     .hero {
-      min-height: auto;
-      padding: 44px 16px 48px;
+      min-height: 100svh;
+      padding: 42px 18px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-position: center 30%;
     }
+    .hero::before { background: rgba(0,0,0,0.50); }
     .hero-bg-circle { width: 360px; height: 360px; }
-    .badge { font-size: 16px; padding: 5px 12px; margin-bottom: 16px; }
-    .hero-title { font-size: clamp(26px, 6vw, 36px); line-height: 1.15; letter-spacing: -0.01em; text-wrap: balance; }
-    .hero-sub { font-size: 16px; margin: 14px auto 24px; padding: 0 2px; max-width: 100%; }
+    .badge { font-size: 13px; padding: 6px 14px; margin-bottom: 18px; }
+    .hero-title { font-size: clamp(28px, 8vw, 40px); line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance; }
+    .hero-sub { font-size: 16px; line-height: 1.5; margin: 16px auto 0; padding: 0 4px; max-width: 100%; }
 
     .btn-primary {
       width: 100%;
@@ -915,7 +920,8 @@ background: linear-gradient(90deg, var(--orange), var(--orange-light));
       font-size: 16px;
       font-weight: 700;
       text-align: center;
-      color: #3B4D1E;
+      color: #ffffff;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.5);
     }
 
     /* VIDEO */
@@ -1065,7 +1071,6 @@ window.addEventListener('load', function() {
   <div class="hero-lines"></div>
 
   <div class="badge">
-    <span class="badge-dot"></span>
     Programa Completo Online
   </div>
 
@@ -1075,10 +1080,7 @@ window.addEventListener('load', function() {
 
   <p class="hero-sub">Você vai aprender comigo o que fazer no dia a dia para construir bons comportamentos no seu cão.</p>
 
-  <div class="hero-mockup">
-    <img src="https://canilmeucaoeducado.github.io/meucaoeducado/preview.webp" alt="Prévia do Programa Meu Cão Educado" width="620" height="auto" fetchpriority="high" decoding="async" style="width:100%; max-width:620px; height:auto; display:block; margin:0 auto; border-radius:16px; box-shadow:0 12px 30px rgba(0,0,0,0.14);">
-    <p style="margin-top:12px; font-size:16px; color:#4B3C1E; text-align:center;">Criado por <strong>Diego Lima</strong> · Veterinário Especialista em Comportamento Canino</p>
-  </div>
+  <p style="margin-top:16px; font-size:16px; color:#f2f2f2; text-shadow:0 1px 8px rgba(0,0,0,0.5); text-align:center;">Criado por <strong>Diego Lima</strong> · Veterinário Especialista em Comportamento Canino</p>
 
   <div class="hero-trust">
     <span>* Acesso imediato</span>
