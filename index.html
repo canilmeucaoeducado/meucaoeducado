@@ -7,6 +7,7 @@
 <!-- CDN RECOMENDADO: GitHub Pages usa TTL de 10min para assets. Para cache longo (1 ano)
      nas imagens, ativar Cloudflare na frente do domínio e configurar Cache Rules
      com edge TTL de 31536000s para /*.webp, /*.mp4, /*.woff2 -->
+<meta name="theme-color" content="#5A6B2D">
 <meta http-equiv="Cache-Control" content="max-age=31536000">
 <title>Programa Online Meu Cão Educado — Diego Lima, Veterinário</title>
 
@@ -957,6 +958,7 @@ background: linear-gradient(90deg, var(--orange), var(--orange-light));
 
     /* PRICING */
     .pricing-section { padding: 48px 16px; }
+    .pricing-section > .container > p.reveal { font-size: 20px; line-height: 1.35; margin-bottom: 20px; padding: 0 4px; }
     .price-card { padding: 28px 16px; margin-top: 28px; border-radius: 14px; }
     .price-value { font-size: 60px; }
     .price-includes li { font-size: 16px; }
@@ -970,6 +972,7 @@ background: linear-gradient(90deg, var(--orange), var(--orange-light));
 
     /* FINAL CTA */
     .final-cta { padding: 56px 16px; }
+    .final-cta .section-title { line-height: 1.15; }
     .final-cta .btn-primary {
       width: 100%;
       justify-content: center;
@@ -1079,7 +1082,7 @@ window.addEventListener('load', function() {
     Seu cão mais calmo e obediente, em casa e na rua.
   </h1>
 
-  <p class="hero-sub">Você vai aprender comigo o que fazer no dia a dia para construir bons comportamentos no seu cão.</p>
+  <p class="hero-sub">Seu cão sempre vai prestar atenção em alguma coisa. A questão é: você vai ensinar ele a prestar atenção em VOCÊ ou deixar que ele decida sozinho?</p>
 
   <p style="margin-top:16px; font-size:16px; color:#f2f2f2; text-shadow:0 1px 8px rgba(0,0,0,0.5); text-align:center;">Criado por <strong>Diego Lima</strong> · Veterinário Especialista em Comportamento Canino</p>
 
@@ -1103,10 +1106,12 @@ window.addEventListener('load', function() {
       Por que eu criei o <span class="orange">Programa Meu Cão Educado</span>
     </h2>
     <div style="display: flex; flex-direction: column; gap: 20px; font-size: 17px; font-weight: 400; color: #3B4D1E; line-height: 1.7;">
-      <p>Durante anos atendendo cães com problemas de comportamento, percebi que muitas pessoas tentam resolver tudo da mesma forma: brigam, repetem comandos, dão trancos na guia ou simplesmente deixam de fazer coisas com o cão, como passear.</p>
-      <p>Mas muitos cães não se comportam mal porque são teimosos ou porque são de uma "raça difícil". Eles simplesmente nunca foram ensinados a se comportar da maneira que esperamos.</p>
-      <p>Foi a partir disso que criei o Programa Meu Cão Educado, para ensinar você a desenvolver calma, foco, autocontrole e uma comunicação melhor com seu cão, através de exercícios que podem ser aplicados no dia a dia.</p>
-      <p>Porque o objetivo não é ter um cão que obedece apenas dentro de casa. É ter um cão que sabe se comportar na vida real, mesmo quando existem pessoas, outros cães ou situações que chamam muito a atenção dele.</p>
+      <p>Seu cão está sempre prestando atenção em alguma coisa.</p>
+      <p>O problema é quando a atenção dele está constantemente voltada para aquilo que gera os comportamentos que INCOMODAM VOCÊ.</p>
+      <p>Foi por isso que eu criei o Programa Meu Cão Educado.</p>
+      <p>Para ensinar seu cão a prestar atenção em VOCÊ, entender o que você espera dele e aprender comportamentos melhores para diferentes situações do dia a dia.</p>
+      <p>Em vez de passar o tempo todo tentando corrigir o que seu cão está fazendo de errado, você aprende a ensinar ele a se comunicar melhor com você e a responder de forma mais adequada ao que acontece ao redor.</p>
+      <p>Porque o objetivo não é ter um cão que obedece apenas dentro de casa. É ter um cão que sabe o que fazer quando existem pessoas, outros cães ou situações que chamam muito a atenção dele.</p>
     </div>
   </div>
 </section>
@@ -1120,40 +1125,28 @@ window.addEventListener('load', function() {
     </div>
     <ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px;">
       <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6;">🐶</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais calma dentro de casa</strong> - Ajude seu cão a desacelerar, relaxar e aprender a ficar tranquilo mesmo quando não está acontecendo nada.</p>
+        <span style="flex-shrink:0; font-size:18px; line-height:1.6;">🎯</span>
+        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais atenção em você</strong> - Ensine seu cão a prestar atenção em você mesmo diante de pessoas, cães, cheiros e outras distrações.</p>
+      </li>
+      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
+        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🤝</span>
+        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais conexão</strong> - Desenvolva uma comunicação melhor com seu cão para que ele aprenda a acompanhar você e responder melhor ao que acontece ao redor.</p>
+      </li>
+      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
+        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🧩</span>
+        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais autocontrole diante dos impulsos</strong> - Ajude seu cão a pensar antes de agir em situações que normalmente fazem ele pular, latir, perseguir, roubar comida ou perder completamente a cabeça.</p>
       </li>
       <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
         <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🚶</span>
         <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Passeios mais tranquilos</strong> - Desenvolva atenção, autocontrole e controle de impulsos para reduzir aquela loucura de puxar, correr atrás de tudo e não prestar atenção em você.</p>
       </li>
       <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🎯</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais atenção em você</strong> - Ensine seu cão a escolher prestar atenção em você mesmo diante de pessoas, cães, cheiros e outras distrações.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🧠</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Um cão mentalmente mais satisfeito</strong> - Atividades de faro, tomada de decisão e estimulação mental para fazer seu cão pensar, se concentrar e usar o cérebro.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
         <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🏠</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Menos tédio e comportamentos indesejados</strong> - Ofereça atividades que ocupam a mente e ajudam seu cão a encontrar formas melhores de gastar energia. Ao invés dele destruir coisas, roer móveis, roubar objetos ou aprontar pela casa.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">💪</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais confiança e controle do corpo</strong> - Exercícios para desenvolver coordenação, consciência corporal e confiança, especialmente úteis para cães inseguros, agitados ou estabanados.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🧩</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais controle diante dos impulsos</strong> - Ajude seu cão a pensar antes de agir em situações que normalmente fazem ele pular, latir, perseguir, roubar comida ou perder completamente a cabeça.</p>
+        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Mais calma dentro de casa</strong> - Ajude seu cão a desacelerar, relaxar e aprender a ficar tranquilo mesmo quando não está acontecendo nada.</p>
       </li>
       <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
         <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">🐕</span>
         <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Um cão mais preparado para a vida real</strong> - Treinos que desenvolvem obediência, tomada de decisão, autocontrole e capacidade de lidar melhor com diferentes situações do dia a dia.</p>
-      </li>
-      <li style="display: flex; align-items: flex-start; gap: 10px; padding: 10px 0;">
-        <span style="flex-shrink:0; font-size:18px; line-height:1.6; margin-top:1px;">⏱️</span>
-        <p style="font-size:16px; color:#3B4D1E; line-height:1.6; margin:0; padding-top:6px;"><strong>Treinos que cabem na sua rotina</strong> - São mais de 60 atividades pensadas para sessões curtas, que você consegue encaixar na rotina mesmo quando tem apenas alguns minutos disponíveis.</p>
       </li>
     </ul>
   </div>
@@ -1206,6 +1199,7 @@ window.addEventListener('load', function() {
     cursor: grab;
     will-change: scroll-position;
     contain: layout style;
+    overscroll-behavior-x: contain;
   }
   .proof-carousel:active { cursor: grabbing; }
   .proof-carousel::-webkit-scrollbar { display: none; }
@@ -1410,7 +1404,7 @@ window.addEventListener('load', function() {
 <section class="proof-section">
   <div class="container">
     <div class="text-center reveal">
-      <h2 class="section-title">Veja o que acontece<br><span class="orange">em poucas semanas</span></h2>
+      <h2 class="section-title">Veja a mudança na vida das pessoas<br>que já decidiram <span class="orange">ensinar seus cães a prestarem atenção nelas</span></h2>
     </div>
   </div>
 
@@ -1483,6 +1477,7 @@ window.addEventListener('load', function() {
 <!-- ============ PRICING ============ -->
 <section id="pricing" class="pricing-section">
   <div class="container">
+    <p class="reveal" style="text-align:center; max-width:600px; margin:0 auto 32px; font-size:clamp(20px,3vw,26px); font-weight:700; color:var(--navy); line-height:1.4;">Agora você precisa dar o próximo passo, entrar no Programa Meu Cão Educado e ensinar seu cão a prestar atenção em você.</p>
     <div class="price-card reveal">
       <div class="price-badge">Oferta Especial</div>
       <div class="price-main" style="font-size:clamp(38px,8vw,68px); font-family:'Outfit',sans-serif; color:var(--orange); line-height:1.1; margin-bottom:4px;">12x de R$ 20,37</div>
@@ -1560,9 +1555,9 @@ window.addEventListener('load', function() {
       <div class="faq2-item">
         <button class="faq2-question" aria-expanded="false">
           <span class="faq2-plus" aria-hidden="true">+</span>
-          E se eu não gostar? Tem garantia?
+          Como funciona a garantia de 7 dias?
         </button>
-        <div class="faq2-answer">Sim! Você tem 7 dias após a compra para solicitar o reembolso completo, sem perguntas e sem burocracia.</div>
+        <div class="faq2-answer">Você tem 7 dias após a compra para solicitar o reembolso completo, sem perguntas e sem burocracia.</div>
       </div>
 
     </div>
@@ -1633,8 +1628,8 @@ window.addEventListener('load', function() {
 <!-- ============ FINAL CTA ============ -->
 <section class="final-cta">
   <div class="container reveal">
-    <h2 class="section-title">Transforme seu cão<br><span class="orange">começando hoje</span></h2>
-    <p class="section-subtitle">Um programa completo que realmente funciona.<br>12x de <strong style="color:var(--orange); font-weight:800; font-size:1.15em;">R$ 20,37</strong> ou R$ 197,00 à vista.</p>
+    <h2 class="section-title">Ensine seu cão a prestar<br><span class="orange">atenção em você.</span></h2>
+    <p class="section-subtitle">Seu cão sempre vai prestar atenção em alguma coisa. Ensine ele a escolher você.</p>
     <a href="https://chk.eduzz.com/lpos7ejv" class="btn-primary btn-cta-final" style="font-size:18px; padding:22px 56px;">
       Começar agora
     </a>
