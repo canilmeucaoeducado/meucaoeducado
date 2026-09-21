@@ -138,21 +138,37 @@
     pointer-events: none;
   }
 
+  /* Selo do hero: texto simples (eyebrow), sem formato de botão, para não atrair cliques mortos */
   .badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.35);
-    border-radius: 100px;
-    padding: 6px 16px;
+    gap: 14px;
+    background: none;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
     font-size: 16px;
     font-weight: 600;
     color: #ffffff;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.55);
     margin-bottom: 28px;
+    cursor: default;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
     animation: fade-up 0.6s ease both;
+  }
+
+  .badge::before,
+  .badge::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: rgba(255,255,255,0.55);
+    flex-shrink: 0;
   }
 
   .hero-title {
@@ -892,7 +908,8 @@ background: linear-gradient(90deg, var(--orange), var(--orange-light));
     }
     .hero::before { background: rgba(0,0,0,0.50); }
     .hero-bg-circle { width: 360px; height: 360px; }
-    .badge { font-size: 13px; padding: 6px 14px; margin-bottom: 18px; }
+    .badge { font-size: 13px; padding: 0; gap: 10px; letter-spacing: 0.12em; margin-bottom: 18px; }
+    .badge::before, .badge::after { width: 20px; }
     .hero-title { font-size: clamp(28px, 8vw, 40px); line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance; }
     .hero-sub { font-size: 16px; line-height: 1.5; margin: 16px auto 0; padding: 0 4px; max-width: 100%; }
 
